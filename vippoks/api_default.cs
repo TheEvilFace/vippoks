@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace vippoks
 {
-    class api_default
+    public class api_default
     {
         public string status { get; set; }
         public object response { get; set; }
-        public string error { get; set; }
-
+        public object error { get; set; }
     }
 }
