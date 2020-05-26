@@ -1,6 +1,6 @@
 ﻿namespace vippoks
 {
-    partial class client_add
+    partial class ClientAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -164,10 +164,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.client_add_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
-        #endregion
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -181,5 +178,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+
+        #endregion
     }
 }

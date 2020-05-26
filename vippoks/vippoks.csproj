@@ -58,21 +58,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiClient.cs" />
-    <Compile Include="api_default.cs" />
-    <Compile Include="client.cs">
+    <Compile Include="Api\ApiDefaultResponse.cs" />
+    <Compile Include="Api\AuthApiClient.cs" />
+    <Compile Include="Api\BaseApiClient.cs" />
+    <Compile Include="Api\ClientApiClient.cs" />
+    <Compile Include="Api\RealtorApiClient.cs" />
+    <Compile Include="Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="client.Designer.cs">
-      <DependentUpon>client.cs</DependentUpon>
+    <Compile Include="Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="client_add.cs">
+    <Compile Include="ClientAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="client_add.Designer.cs">
-      <DependentUpon>client_add.cs</DependentUpon>
+    <Compile Include="ClientAdd.Designer.cs">
+      <DependentUpon>ClientAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="client_list.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,23 +83,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="realties.cs">
+    <Compile Include="Realties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="realties.Designer.cs">
-      <DependentUpon>realties.cs</DependentUpon>
+    <Compile Include="Realties.Designer.cs">
+      <DependentUpon>Realties.cs</DependentUpon>
     </Compile>
-    <Compile Include="rieltor.cs">
+    <Compile Include="Realtor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rieltor.Designer.cs">
-      <DependentUpon>rieltor.cs</DependentUpon>
+    <Compile Include="Realtor.Designer.cs">
+      <DependentUpon>Realtor.cs</DependentUpon>
     </Compile>
-    <Compile Include="rieltor_add.cs">
+    <Compile Include="RealtorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rieltor_add.Designer.cs">
-      <DependentUpon>rieltor_add.cs</DependentUpon>
+    <Compile Include="RealtorAdd.Designer.cs">
+      <DependentUpon>RealtorAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Главное меню.cs">
       <SubType>Form</SubType>
@@ -105,11 +107,11 @@
     <Compile Include="Главное меню.Designer.cs">
       <DependentUpon>Главное меню.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="client.resx">
-      <DependentUpon>client.cs</DependentUpon>
+    <EmbeddedResource Include="Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="client_add.resx">
-      <DependentUpon>client_add.cs</DependentUpon>
+    <EmbeddedResource Include="ClientAdd.resx">
+      <DependentUpon>ClientAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -124,14 +126,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="realties.resx">
-      <DependentUpon>realties.cs</DependentUpon>
+    <EmbeddedResource Include="Realties.resx">
+      <DependentUpon>Realties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rieltor.resx">
-      <DependentUpon>rieltor.cs</DependentUpon>
+    <EmbeddedResource Include="Realtor.resx">
+      <DependentUpon>Realtor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rieltor_add.resx">
-      <DependentUpon>rieltor_add.cs</DependentUpon>
+    <EmbeddedResource Include="RealtorAdd.resx">
+      <DependentUpon>RealtorAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Главное меню.resx">
       <DependentUpon>Главное меню.cs</DependentUpon>

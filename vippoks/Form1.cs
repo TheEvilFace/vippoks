@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace vippoks
 {
     public partial class Form1 : Form
     {
-        const string API_URL = "http://213.80.189.122:6782/api";
-        private ApiClient apiClient;
-        
+        private readonly AuthApiClient _authApiClient;
         
         public Form1()
         {
             InitializeComponent();
-            apiClient = new ApiClient();
+            _authApiClient = new AuthApiClient();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool isAuth = apiClient.Auth(textBox1.Text, textBox2.Text);
+            bool isAuth = _authApiClient.Auth(textBox1.Text, textBox2.Text);
             if (isAuth)
             {
                 Главное_меню f1 = new Главное_меню();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace vippoks
 {
-    public class api_default
+    public class ApiDefaultResponse
     {
         public string status { get; set; }
         public object response { get; set; }

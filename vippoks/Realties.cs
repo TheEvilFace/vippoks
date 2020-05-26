@@ -10,9 +10,9 @@ using System.Data;
 
 namespace vippoks
 {
-    public partial class realties : Form
+    public partial class Realties : Form
     {
-        public realties()
+        public Realties()
         {
             InitializeComponent();
         }
