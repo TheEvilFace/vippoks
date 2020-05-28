@@ -25,13 +25,13 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public void UpdateById(int id, string city, string street, string house, int type_id, int flat, float area, int floors_count, string lat, string Long)
+        public void UpdateById(int id, string city, string street, string house, int type_id, int flat, float area, int floors_count, string latitude, string longitude)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/update/" + id);
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_POST;
 
-            object clientDataRequest = new { city, street, house, type_id, flat, area, floors_count, lat, Long };
+            object clientDataRequest = new { city, street, house, type_id, flat, area, floors_count, latitude, longitude};
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
               
