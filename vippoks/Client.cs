@@ -29,9 +29,10 @@ namespace vippoks
             }
             catch(Exception exp)
             {
-                MessageBox.Show("Егор петух не добавил данных!"); //todo: заменить на MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
         }
+
         private void client_Load(object sender, EventArgs e)
         {
             table();
@@ -57,7 +58,7 @@ namespace vippoks
             }
             catch (Exception exp)
             {
-                MessageBox.Show("Егор петух не добавил данных!"); //todo: заменить на MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
         }
 
@@ -100,7 +101,7 @@ namespace vippoks
             }
             catch (Exception exp)
             {
-                MessageBox.Show("Некорректно введены данные!");//todo: заменить на MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
             change_lock();
         }

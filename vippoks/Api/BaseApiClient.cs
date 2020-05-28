@@ -26,7 +26,6 @@ namespace vippoks
                 MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
                 return "";
             }
-           
         }
     }
 }

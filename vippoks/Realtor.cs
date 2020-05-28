@@ -65,7 +65,7 @@ namespace vippoks
             }
             catch (Exception exp)
             {
-                MessageBox.Show("Егор петух не добавил данных!"); //todo: заменить на MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}"); 
             }
         }
 

@@ -9,7 +9,6 @@ namespace vippoks
 {
     public sealed class AuthApiClient : BaseApiClient
     {
-        
         public bool Auth(string login, string password)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(API_BASE_URL + @"/auth");
