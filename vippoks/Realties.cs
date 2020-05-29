@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using vippoks.Api.Entities;
 
 
 namespace vippoks
@@ -82,13 +84,15 @@ namespace vippoks
         {
             table();
             change_lock();
-            var test = _realtiesApiClient.TypeFill();
-            DataTable kostil = (DataTable)JsonConvert.DeserializeObject(test.response.ToString(), typeof(DataTable));
-            
-            foreach (DataRow row in kostil.Rows)
-                type_id.Items.Add((row["name"].ToString()));
+            List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
 
-            type_id.DropDownStyle = ComboBoxStyle.DropDownList;
+            type_id.DisplayMember = "Text";
+            type_id.ValueMember = "Value";
+            
+            foreach (var realty in realtyTypeEntities)
+            {
+                type_id.Items.Add(new {Text = realty.Name, Value = realty.Id});
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

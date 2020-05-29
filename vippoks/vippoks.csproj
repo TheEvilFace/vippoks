@@ -63,6 +63,7 @@
     <Compile Include="Api\AuthApiClient.cs" />
     <Compile Include="Api\BaseApiClient.cs" />
     <Compile Include="Api\ClientApiClient.cs" />
+    <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
     <Compile Include="Api\RealtiesApiClient.cs" />
     <Compile Include="Api\RealtorApiClient.cs" />
     <Compile Include="Client.cs">

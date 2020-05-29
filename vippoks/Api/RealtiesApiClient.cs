@@ -1,6 +1,11 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
+using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using vippoks.Api.Entities;
 
 namespace vippoks
 {
@@ -55,16 +60,26 @@ namespace vippoks
 
             this.makeRequest(request);
         }
-        public ApiDefaultResponse TypeFill()
+        public List<RealtyTypeEntity> GetTypes()
         {
+            List<RealtyTypeEntity> realtyTypeEntities = new List<RealtyTypeEntity>();
+            
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/types/get");
-
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_GET;
 
             string res = this.makeRequest(request);
+            ApiDefaultResponse defaultResponse = JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
 
-            return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+            JArray innerResponse = (JArray) defaultResponse.response;
+            JObject[] types = innerResponse.Select(jv => (JObject)jv).ToArray();
+            
+            foreach (JObject type in types)
+            {
+                realtyTypeEntities.Add(JsonConvert.DeserializeObject<RealtyTypeEntity>(type.ToString()));
+            }
+            
+            return realtyTypeEntities;
         }
     }
 }
