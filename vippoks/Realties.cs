@@ -12,7 +12,7 @@ namespace vippoks
         private readonly RealtiesApiClient _realtiesApiClient;
         private DataTable dt;
         private int id;
-
+        DataTable kostil;
         public Realties()
         {
             InitializeComponent();
@@ -59,7 +59,7 @@ namespace vippoks
             {
                 _realtiesApiClient.UpdateById(id, Int32.Parse(floor.Text),
                     city.Text, street.Text,
-                    house.Text, Int32.Parse(type_id.Text),
+                    house.Text, Int32.Parse(kostil.Rows[type_id.SelectedIndex][0].ToString()),
                     Int32.Parse(flat.Text), float.Parse(area.Text),
                     Int32.Parse(floors_count.Text), latitude.Text, 
                     longitude.Text);
@@ -77,16 +77,16 @@ namespace vippoks
         {
             change_lock();
         }
-
+        
         private void Realties_Load(object sender, EventArgs e)
         {
             table();
             change_lock();
             var test = _realtiesApiClient.TypeFill();
-            DataTable kostil = (DataTable)JsonConvert.DeserializeObject(test.response.ToString(), typeof(DataTable));
+            kostil = (DataTable)JsonConvert.DeserializeObject(test.response.ToString(), typeof(DataTable));
             
             foreach (DataRow row in kostil.Rows)
-                type_id.Items.Add((row["name"].ToString()));
+                type_id.Items.Add(row["name"].ToString());
 
             type_id.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -132,6 +132,11 @@ namespace vippoks
             {
                 MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
+        }
+
+        private void type_id_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

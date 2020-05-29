@@ -189,6 +189,7 @@
             this.type_id.Name = "type_id";
             this.type_id.Size = new System.Drawing.Size(100, 21);
             this.type_id.TabIndex = 53;
+            this.type_id.SelectedIndexChanged += new System.EventHandler(this.type_id_SelectedIndexChanged);
             // 
             // label5
             // 
