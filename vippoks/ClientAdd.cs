@@ -30,12 +30,11 @@ namespace vippoks
             {
                 _clientApiClient.Create(textBox1.Text, textBox2.Text,
                     textBox3.Text, textBox4.Text, textBox5.Text );
-                MessageBox.Show("ты не петух. Клиент создан");  //todo: заменить или вовсе удалить
                 this.Close();
 
             }catch(Exception exp)
             {
-                MessageBox.Show("Ты петух не верно данные ввел!"); //todo: заменить на MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}"); 
             }
         }
 

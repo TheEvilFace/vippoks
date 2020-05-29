@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flat = new System.Windows.Forms.TextBox();
+            this.house = new System.Windows.Forms.TextBox();
+            this.street = new System.Windows.Forms.TextBox();
+            this.city = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,48 +42,48 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.type_id = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.area = new System.Windows.Forms.TextBox();
+            this.floors_count = new System.Windows.Forms.TextBox();
+            this.latitude = new System.Windows.Forms.TextBox();
+            this.longitude = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.floor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox4
+            // flat
             // 
-            this.textBox4.Location = new System.Drawing.Point(697, 120);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 52;
+            this.flat.Location = new System.Drawing.Point(697, 120);
+            this.flat.Name = "flat";
+            this.flat.Size = new System.Drawing.Size(100, 20);
+            this.flat.TabIndex = 52;
             // 
-            // textBox3
+            // house
             // 
-            this.textBox3.Location = new System.Drawing.Point(697, 67);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 51;
+            this.house.Location = new System.Drawing.Point(697, 67);
+            this.house.Name = "house";
+            this.house.Size = new System.Drawing.Size(100, 20);
+            this.house.TabIndex = 51;
             // 
-            // textBox2
+            // street
             // 
-            this.textBox2.Location = new System.Drawing.Point(697, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 50;
+            this.street.Location = new System.Drawing.Point(697, 41);
+            this.street.Name = "street";
+            this.street.Size = new System.Drawing.Size(100, 20);
+            this.street.TabIndex = 50;
             // 
-            // textBox1
+            // city
             // 
-            this.textBox1.Location = new System.Drawing.Point(697, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 49;
+            this.city.Location = new System.Drawing.Point(697, 15);
+            this.city.Name = "city";
+            this.city.Size = new System.Drawing.Size(100, 20);
+            this.city.TabIndex = 49;
             // 
             // label4
             // 
@@ -182,22 +182,22 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // comboBox1
+            // type_id
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(697, 93);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 53;
+            this.type_id.FormattingEnabled = true;
+            this.type_id.Location = new System.Drawing.Point(697, 93);
+            this.type_id.Name = "type_id";
+            this.type_id.Size = new System.Drawing.Size(100, 21);
+            this.type_id.TabIndex = 53;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(583, 123);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 54;
-            this.label5.Text = "Этаж";
+            this.label5.Text = "Номер квартиры";
             // 
             // label6
             // 
@@ -235,71 +235,71 @@
             this.label9.TabIndex = 58;
             this.label9.Text = "Долгота";
             // 
-            // textBox5
+            // area
             // 
-            this.textBox5.Location = new System.Drawing.Point(697, 146);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 59;
+            this.area.Location = new System.Drawing.Point(697, 146);
+            this.area.Name = "area";
+            this.area.Size = new System.Drawing.Size(100, 20);
+            this.area.TabIndex = 59;
             // 
-            // textBox6
+            // floors_count
             // 
-            this.textBox6.Location = new System.Drawing.Point(697, 172);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 60;
+            this.floors_count.Location = new System.Drawing.Point(697, 172);
+            this.floors_count.Name = "floors_count";
+            this.floors_count.Size = new System.Drawing.Size(100, 20);
+            this.floors_count.TabIndex = 60;
             // 
-            // textBox7
+            // latitude
             // 
-            this.textBox7.Location = new System.Drawing.Point(697, 199);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 61;
+            this.latitude.Location = new System.Drawing.Point(697, 199);
+            this.latitude.Name = "latitude";
+            this.latitude.Size = new System.Drawing.Size(100, 20);
+            this.latitude.TabIndex = 61;
             // 
-            // textBox8
+            // longitude
             // 
-            this.textBox8.Location = new System.Drawing.Point(697, 225);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 62;
+            this.longitude.Location = new System.Drawing.Point(697, 225);
+            this.longitude.Name = "longitude";
+            this.longitude.Size = new System.Drawing.Size(100, 20);
+            this.longitude.TabIndex = 62;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(584, 255);
+            this.label10.Location = new System.Drawing.Point(583, 255);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 13);
+            this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 63;
-            this.label10.Text = "Количество этажей";
+            this.label10.Text = "Этаж";
             // 
-            // textBox9
+            // floor
             // 
-            this.textBox9.Location = new System.Drawing.Point(697, 252);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 64;
+            this.floor.Location = new System.Drawing.Point(697, 252);
+            this.floor.Name = "floor";
+            this.floor.Size = new System.Drawing.Size(100, 20);
+            this.floor.TabIndex = 64;
             // 
             // Realties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 336);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.floor);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.longitude);
+            this.Controls.Add(this.latitude);
+            this.Controls.Add(this.floors_count);
+            this.Controls.Add(this.area);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.type_id);
+            this.Controls.Add(this.flat);
+            this.Controls.Add(this.house);
+            this.Controls.Add(this.street);
+            this.Controls.Add(this.city);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -321,10 +321,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox flat;
+        private System.Windows.Forms.TextBox house;
+        private System.Windows.Forms.TextBox street;
+        private System.Windows.Forms.TextBox city;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -335,17 +335,17 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox type_id;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox area;
+        private System.Windows.Forms.TextBox floors_count;
+        private System.Windows.Forms.TextBox latitude;
+        private System.Windows.Forms.TextBox longitude;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox floor;
     }
 }

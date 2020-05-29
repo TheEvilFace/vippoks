@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 
 namespace vippoks
@@ -38,29 +39,30 @@ namespace vippoks
 
         private void change_lock()
         {
-            textBox1.Enabled = !textBox1.Enabled;
-            textBox2.Enabled = !textBox2.Enabled;
-            comboBox1.Enabled = !comboBox1.Enabled;
-            textBox3.Enabled = !textBox3.Enabled;
-            textBox4.Enabled = !textBox4.Enabled;
-            textBox5.Enabled = !textBox5.Enabled;
-            textBox6.Enabled = !textBox6.Enabled;
-            textBox7.Enabled = !textBox7.Enabled;
-            textBox8.Enabled = !textBox8.Enabled;
+            city.Enabled = !city.Enabled;
+            street.Enabled = !street.Enabled;
+            type_id.Enabled = !type_id.Enabled;
+            house.Enabled = !house.Enabled;
+            flat.Enabled = !flat.Enabled;
+            area.Enabled = !area.Enabled;
+            floors_count.Enabled = !floors_count.Enabled;
+            latitude.Enabled = !latitude.Enabled;
+            longitude.Enabled = !longitude.Enabled;
             button4.Enabled = !button4.Enabled;
             button5.Enabled = !button5.Enabled;
+            floor.Enabled = !floor.Enabled;
         }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
             try
             {
-                _realtiesApiClient.UpdateById(id,
-                    textBox1.Text, textBox2.Text,
-                    textBox3.Text, Int32.Parse(comboBox1.Text),
-                    Int32.Parse(textBox4.Text), float.Parse(textBox5.Text),
-                    Int32.Parse(textBox6.Text), textBox7.Text, 
-                    textBox8.Text);
+                _realtiesApiClient.UpdateById(id, Int32.Parse(floor.Text),
+                    city.Text, street.Text,
+                    house.Text, Int32.Parse(type_id.Text),
+                    Int32.Parse(flat.Text), float.Parse(area.Text),
+                    Int32.Parse(floors_count.Text), latitude.Text, 
+                    longitude.Text);
                 table();
             }
             catch (Exception exp)
@@ -80,6 +82,13 @@ namespace vippoks
         {
             table();
             change_lock();
+            var test = _realtiesApiClient.TypeFill();
+            DataTable kostil = (DataTable)JsonConvert.DeserializeObject(test.response.ToString(), typeof(DataTable));
+            
+            foreach (DataRow row in kostil.Rows)
+                type_id.Items.Add((row["name"].ToString()));
+
+            type_id.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,18 +106,19 @@ namespace vippoks
             dataGridView1.Rows[e.RowIndex].Selected = true;
             id = Int32.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
 
-            textBox1.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
-            textBox2.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][2].ToString();
-            textBox3.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][3].ToString();
+            city.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
+            street.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][2].ToString();
+            house.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][3].ToString();
 
-            textBox4.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][4].ToString();
-            textBox5.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][5].ToString();
-            textBox6.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][6].ToString();  
-            textBox7.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][7].ToString();
-            textBox8.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][8].ToString();
-            textBox8.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][9].ToString();
+            flat.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][4].ToString();
+            floor.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][5].ToString();
+            area.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][6].ToString();
 
-            comboBox1.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][10].ToString();
+            floors_count.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][7].ToString();
+            latitude.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][8].ToString();
+            longitude.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][9].ToString();
+
+            type_id.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][10].ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
