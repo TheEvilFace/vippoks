@@ -54,7 +54,7 @@
             this.longitude = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.floor = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // flat
@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 336);
+            this.ClientSize = new System.Drawing.Size(829, 336);
             this.Controls.Add(this.floor);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.longitude);
@@ -313,39 +313,38 @@
             this.Name = "Realties";
             this.Text = "realties";
             this.Load += new System.EventHandler(this.Realties_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
-        #endregion
-
-        private System.Windows.Forms.TextBox flat;
-        private System.Windows.Forms.TextBox house;
-        private System.Windows.Forms.TextBox street;
-        private System.Windows.Forms.TextBox city;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox area;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox city;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox type_id;
+        private System.Windows.Forms.TextBox flat;
+        private System.Windows.Forms.TextBox floor;
+        private System.Windows.Forms.TextBox floors_count;
+        private System.Windows.Forms.TextBox house;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox area;
-        private System.Windows.Forms.TextBox floors_count;
         private System.Windows.Forms.TextBox latitude;
         private System.Windows.Forms.TextBox longitude;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox floor;
+        private System.Windows.Forms.TextBox street;
+        private System.Windows.Forms.ComboBox type_id;
+
+        #endregion
     }
 }

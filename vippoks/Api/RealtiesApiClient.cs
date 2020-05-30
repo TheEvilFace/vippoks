@@ -24,7 +24,7 @@ namespace vippoks
 
         public void Delete(int id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/delete/" + id);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + $@"/{id}/delete");
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_GET;
             this.makeRequest(request);
@@ -32,7 +32,7 @@ namespace vippoks
 
         public void UpdateById(int id, int floor, string city, string street, string house, int type_id, int flat, float area, int floors_count, string latitude, string longitude)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/update/" + id);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + $@"/{id}/update");
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_POST;
 

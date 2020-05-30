@@ -58,10 +58,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiDefaultResponse.cs" />
     <Compile Include="Api\AuthApiClient.cs" />
     <Compile Include="Api\BaseApiClient.cs" />
     <Compile Include="Api\ClientApiClient.cs" />
+    <Compile Include="Api\Entities\ApiDefaultResponse.cs" />
     <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
     <Compile Include="Api\RealtiesApiClient.cs" />
     <Compile Include="Api\RealtorApiClient.cs" />

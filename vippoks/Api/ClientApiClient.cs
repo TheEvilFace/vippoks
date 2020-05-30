@@ -20,7 +20,7 @@ namespace vippoks
 
         public void Delete(int id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + @"/delete/" + id);
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(CLIENT_API_URL + $@"/{id}/delete");
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_GET;
             this.makeRequest(request);
@@ -28,7 +28,7 @@ namespace vippoks
 
         public void UpdateById(int id, string name, string surname, string patronymic, string phone, string email)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + @"/update/" + id);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + $@"/{id}/update");
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_POST;
 
