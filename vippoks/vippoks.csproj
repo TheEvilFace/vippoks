@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ApiDefaultResponse.cs" />
-    <Compile Include="Api\ApiTypeResponse.cs" />
     <Compile Include="Api\AuthApiClient.cs" />
     <Compile Include="Api\BaseApiClient.cs" />
     <Compile Include="Api\ClientApiClient.cs" />

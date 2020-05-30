@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using vippoks.Api.Entities;
 
 
@@ -57,11 +56,12 @@ namespace vippoks
 
         private void button5_Click_1(object sender, EventArgs e)
         {
+            MessageBox.Show(type_id.SelectedValue.ToString());
             try
             {
                 _realtiesApiClient.UpdateById(id, Int32.Parse(floor.Text),
                     city.Text, street.Text,
-                    house.Text, Int32.Parse(type_id.Text),
+                    house.Text, Int32.Parse(type_id.SelectedValue.ToString()),
                     Int32.Parse(flat.Text), float.Parse(area.Text),
                     Int32.Parse(floors_count.Text), latitude.Text, 
                     longitude.Text);
@@ -85,14 +85,9 @@ namespace vippoks
             table();
             change_lock();
             List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
-
-            type_id.DisplayMember = "Text";
-            type_id.ValueMember = "Value";
-            
-            foreach (var realty in realtyTypeEntities)
-            {
-                type_id.Items.Add(new {Text = realty.Name, Value = realty.Id});
-            }
+            type_id.DataSource = realtyTypeEntities;
+            type_id.DisplayMember = "Name";
+            type_id.ValueMember = "Id";
         }
 
         private void button2_Click(object sender, EventArgs e)
