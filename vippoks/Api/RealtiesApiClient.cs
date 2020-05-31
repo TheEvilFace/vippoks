@@ -45,14 +45,14 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public void Create( string city, string street, string house, int type_id, int flat, float area, int floors_count, string latitude, string longitude)
+        public void Create( int floor,  string city, string street, string house, int type_id, int flat, float area, int floors_count, string latitude, string longitude)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/create");
 
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_POST;
 
-            object realtiesDataRequest = new {  city, street, house, type_id, flat, area, floors_count, latitude, longitude };
+            object realtiesDataRequest = new { floor, city, street, house, type_id, flat, area, floors_count, latitude, longitude };
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 streamWriter.Write(JsonConvert.SerializeObject(realtiesDataRequest));

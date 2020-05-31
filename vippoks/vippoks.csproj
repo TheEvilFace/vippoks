@@ -91,6 +91,12 @@
     <Compile Include="Realties.Designer.cs">
       <DependentUpon>Realties.cs</DependentUpon>
     </Compile>
+    <Compile Include="RealtiesAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RealtiesAdd.Designer.cs">
+      <DependentUpon>RealtiesAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Realtor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="Realties.resx">
       <DependentUpon>Realties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RealtiesAdd.resx">
+      <DependentUpon>RealtiesAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Realtor.resx">
       <DependentUpon>Realtor.cs</DependentUpon>

@@ -132,5 +132,11 @@ namespace vippoks
                 MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RealtiesAdd f = new RealtiesAdd(this);
+            f.Show();
+        }
     }
 }

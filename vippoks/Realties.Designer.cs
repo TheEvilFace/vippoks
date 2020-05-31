@@ -54,7 +54,7 @@
             this.longitude = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.floor = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // flat
@@ -169,6 +169,7 @@
             this.button1.TabIndex = 40;
             this.button1.Text = "Создать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -313,9 +314,10 @@
             this.Name = "Realties";
             this.Text = "realties";
             this.Load += new System.EventHandler(this.Realties_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.TextBox area;
