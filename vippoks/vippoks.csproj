@@ -62,7 +62,11 @@
     <Compile Include="Api\BaseApiClient.cs" />
     <Compile Include="Api\ClientApiClient.cs" />
     <Compile Include="Api\Entities\ApiDefaultResponse.cs" />
+    <Compile Include="Api\Entities\ClientEntity.cs" />
+    <Compile Include="Api\Entities\RealtorEntity.cs" />
     <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
+    <Compile Include="Api\OffersApiClient.cs" />
+    <Compile Include="Api\Entities\OffersEntity.cs" />
     <Compile Include="Api\RealtiesApiClient.cs" />
     <Compile Include="Api\RealtorApiClient.cs" />
     <Compile Include="Client.cs">
@@ -82,6 +86,18 @@
     </Compile>
     <Compile Include="Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Needs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Needs.Designer.cs">
+      <DependentUpon>Needs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Offers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offers.Designer.cs">
+      <DependentUpon>Offers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offers.resx">
+      <DependentUpon>Offers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

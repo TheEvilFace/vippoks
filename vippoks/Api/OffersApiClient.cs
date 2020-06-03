@@ -1,0 +1,78 @@
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using vippoks.Api.Entities;
+
+
+namespace vippoks
+{
+    class OffersApiClient : BaseApiClient
+    {
+        private string OFFERS_API_URL = API_BASE_URL + "/offers";
+
+        public void Delete(int id)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + $@"/{id}/delete/");
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_GET;
+            this.makeRequest(request);
+        }
+
+        public void UpdateById(int id ,int client_id, int realtor_id, float price, int realty_type)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + $@"/{id}/update/");
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_POST;
+
+            object realtorDataRequest = new { client_id, realtor_id, price , realty_type };
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(realtorDataRequest));
+            }
+
+            this.makeRequest(request);
+        }
+
+        public void Create( int client_id, int realtor_id, float price, int realty_type)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + @"/create");
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_POST;
+
+            object realtorDataRequest = new { client_id, realtor_id, price, realty_type };
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(realtorDataRequest));
+            }
+
+            this.makeRequest(request);
+        }
+        public List<OffersEntity> GetTypes()
+        {
+            List<OffersEntity> offersEntity = new List<OffersEntity>();
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + @"/get");
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_GET;
+
+            string res = this.makeRequest(request);
+            ApiDefaultResponse defaultResponse = JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+
+            JArray innerResponse = (JArray)defaultResponse.response;
+            JObject[] types = innerResponse.Select(jv => (JObject)jv).ToArray();
+
+            foreach (JObject type in types)
+            {
+                offersEntity.Add(JsonConvert.DeserializeObject<OffersEntity>(type.ToString()));
+            }
+
+            return offersEntity;
+        }
+    }
+}

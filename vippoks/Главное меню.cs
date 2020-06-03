@@ -34,5 +34,17 @@ namespace vippoks
             Realties f1 = new Realties();
             f1.Show();
         }
+
+        private void предложенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Offers f = new Offers();
+            f.Show();
+        }
+
+        private void потребностьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Needs f = new Needs();
+            f.Show();
+        }
     }
 }

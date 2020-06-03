@@ -17,6 +17,11 @@ namespace vippoks
             _realties = owner;
             this.FormClosing += new FormClosingEventHandler(this.RealtiesAdd_FormClosing);
             _realtiesApiClient = new RealtiesApiClient();
+
+            List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
+            type_id.DataSource = realtyTypeEntities;
+            type_id.DisplayMember = "Name";
+            type_id.ValueMember = "Id";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -50,10 +55,7 @@ namespace vippoks
 
         private void RealtiesAdd_Load(object sender, EventArgs e)
         {
-            List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
-            type_id.DataSource = realtyTypeEntities;
-            type_id.DisplayMember = "Name";
-            type_id.ValueMember = "Id";
+            
         }
     }
 }
