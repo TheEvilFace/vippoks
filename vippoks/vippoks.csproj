@@ -66,7 +66,7 @@
     <Compile Include="Api\Entities\RealtorEntity.cs" />
     <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
     <Compile Include="Api\OffersApiClient.cs" />
-    <Compile Include="Api\Entities\OffersEntity.cs" />
+    <Compile Include="Api\Entities\OfferEntity.cs" />
     <Compile Include="Api\RealtiesApiClient.cs" />
     <Compile Include="Api\RealtorApiClient.cs" />
     <Compile Include="Client.cs">

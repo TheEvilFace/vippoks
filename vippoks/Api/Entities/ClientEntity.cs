@@ -2,11 +2,11 @@
 {
     class ClientEntity
     {
-        int id { get; set; }
-        string name {get;set;}
-        string surname { get;set;}
-        string patronymic { get;set;}
-        int phone { get;set;}
-        string email { get; set; }
+        public int id { get; set; }
+        public string name {get; set;}
+        public string surname { get; set;}
+        public string patronymic { get; set;}
+        public string phone { get; set;}
+        public string email { get; set; }
     }
 }

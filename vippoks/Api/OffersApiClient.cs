@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -53,9 +54,9 @@ namespace vippoks
 
             this.makeRequest(request);
         }
-        public List<OffersEntity> GetTypes()
+        public List<OfferEntity> GetTypes()
         {
-            List<OffersEntity> offersEntity = new List<OffersEntity>();
+            List<OfferEntity> offersEntity = new List<OfferEntity>();
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + @"/get");
             request.ContentType = CONTENT_TYPE;
@@ -69,10 +70,30 @@ namespace vippoks
 
             foreach (JObject type in types)
             {
-                offersEntity.Add(JsonConvert.DeserializeObject<OffersEntity>(type.ToString()));
+                offersEntity.Add(getOfferFromJson(type));
             }
 
             return offersEntity;
+        }
+
+        private OfferEntity getOfferFromJson(JObject jObject)
+        {
+            JObject jOfferEntity = JObject.Parse(jObject.ToString());
+            JToken jId = jOfferEntity["id"];
+            JToken jPrice = jOfferEntity["price"];
+            JToken jClientEntity = jOfferEntity["client"];
+            JToken jRealtorEntity = jOfferEntity["realtor"];
+            JToken jRealtyTypeEntity = jOfferEntity["realty_type"];
+
+            return new OfferEntity
+            {
+                id     = Int32.Parse(jId.ToString()),
+                price  = Int32.Parse(jPrice.ToString()),
+                client = jClientEntity.ToObject<ClientEntity>(),
+                realtor = jRealtorEntity.ToObject<RealtorEntity>(),
+                realty_type = jRealtyTypeEntity.ToObject<RealtyTypeEntity>()
+            };
+
         }
     }
 }

@@ -2,10 +2,10 @@
 {
     class RealtorEntity
     {
-        int id { get; set; }
-        string name { get; set; }
-        string surname { get; set; }
-        string patronymic { get; set; }
-        int part_percentage { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
+        public string patronymic { get; set; }
+        public int part_percentage { get; set; }
     }
 }
