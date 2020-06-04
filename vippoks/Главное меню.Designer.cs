@@ -34,12 +34,14 @@
             this.риелторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сессия2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.недвижимостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.сессия3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.предложенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.потребностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,16 +94,6 @@
             this.недвижимостьToolStripMenuItem.Text = "Недвижимость";
             this.недвижимостьToolStripMenuItem.Click += new System.EventHandler(this.недвижимостьToolStripMenuItem_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::vippoks.Properties.Resources.unnamed;
-            this.pictureBox1.Location = new System.Drawing.Point(52, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(512, 257);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // сессия3ToolStripMenuItem
             // 
             this.сессия3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -114,30 +106,53 @@
             // предложенияToolStripMenuItem
             // 
             this.предложенияToolStripMenuItem.Name = "предложенияToolStripMenuItem";
-            this.предложенияToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.предложенияToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.предложенияToolStripMenuItem.Text = "Предложения";
             this.предложенияToolStripMenuItem.Click += new System.EventHandler(this.предложенияToolStripMenuItem_Click);
             // 
             // потребностьToolStripMenuItem
             // 
             this.потребностьToolStripMenuItem.Name = "потребностьToolStripMenuItem";
-            this.потребностьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.потребностьToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.потребностьToolStripMenuItem.Text = "Потребность";
             this.потребностьToolStripMenuItem.Click += new System.EventHandler(this.потребностьToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::vippoks.Properties.Resources.unnamed1;
+            this.pictureBox1.Location = new System.Drawing.Point(52, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(256, 257);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::vippoks.Properties.Resources.unnamed1;
+            this.pictureBox2.Location = new System.Drawing.Point(314, 27);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(256, 257);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // Главное_меню
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 296);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Главное_меню";
             this.Text = "Главное_меню";
+            this.Load += new System.EventHandler(this.Главное_меню_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +171,6 @@
         private System.Windows.Forms.ToolStripMenuItem сессия3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem предложенияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem потребностьToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

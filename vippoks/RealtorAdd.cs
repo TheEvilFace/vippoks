@@ -34,7 +34,6 @@ namespace vippoks
             {
                 _realtorApiClient.Create(textBox1.Text, textBox2.Text,
                                                 textBox3.Text, textBox4.Text);
-                MessageBox.Show("ты не петух. Клиент создан"); //todo: заменить или вовсе удалить
                 this.Close();
 
             }

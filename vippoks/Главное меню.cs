@@ -15,6 +15,7 @@ namespace vippoks
         public Главное_меню()
         {
             InitializeComponent();
+            pictureBox2.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 
         private void клиентToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,6 +46,11 @@ namespace vippoks
         {
             Needs f = new Needs();
             f.Show();
+        }
+
+        private void Главное_меню_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

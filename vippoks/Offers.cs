@@ -28,10 +28,17 @@ namespace vippoks
             dataGridView1.DataSource = dt;
             try
             {
-                dataGridView1.Columns.Remove("id");
-                dataGridView1.Columns.Remove("Client_id");
-                dataGridView1.Columns.Remove("Realtor_id");
-                dataGridView1.Columns.Remove("Realty_id");
+                if (dataGridView1.Columns.Contains("id"))
+                    dataGridView1.Columns.Remove("id");
+
+                if (dataGridView1.Columns.Contains("Client_id"))
+                    dataGridView1.Columns.Remove("Client_id"); 
+
+                if (dataGridView1.Columns.Contains("Realtor_id"))
+                    dataGridView1.Columns.Remove("Realtor_id");
+
+                if (dataGridView1.Columns.Contains("Realty_id"))
+                    dataGridView1.Columns.Remove("Realty_id");
             }
             catch (Exception exp)
             {
@@ -46,6 +53,7 @@ namespace vippoks
 
         private void FillDt(List<OfferEntity> offerEntities)
         {
+            dt.Clear();
             foreach (var offerEntity in offerEntities)
             {
                 DataRow row = dt.NewRow();
@@ -79,6 +87,30 @@ namespace vippoks
             
             dt.Columns.Add("Realty_id");
             dt.Columns.Add("Realty");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _offersApiClient.Delete(id);
+            table();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                id = int.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }

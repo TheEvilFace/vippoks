@@ -16,7 +16,7 @@ namespace vippoks
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Offers());
+            Application.Run(new Auth());
         }
     }
 }
