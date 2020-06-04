@@ -59,7 +59,6 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(type.SelectedValue.ToString());
             try
             {
                 _offersApiClient.Create(Int32.Parse(client.SelectedValue.ToString()), 

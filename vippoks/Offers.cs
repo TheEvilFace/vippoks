@@ -11,6 +11,9 @@ namespace vippoks
     public partial class Offers : Form
     {
         private readonly OffersApiClient _offersApiClient;
+        private ClientApiClient _clientApiClient;
+        private RealtorApiClient _realtorApiClient;
+        private RealtiesApiClient _realtiesApiClient;
         private DataTable dt;
         private int id;
 
@@ -20,6 +23,25 @@ namespace vippoks
             _offersApiClient = new OffersApiClient();
             dt = new DataTable();
             AddColumns();
+            _clientApiClient = new ClientApiClient();
+            _realtorApiClient = new RealtorApiClient();
+            _realtiesApiClient = new RealtiesApiClient();
+
+            List<ClientEntity> clientEntities = _clientApiClient.GetClients();
+            client.DataSource = clientEntities;
+            client.DisplayMember = "GetInitials";
+            client.ValueMember = "id";
+
+            List<RealtorEntity> realtorEntities = _realtorApiClient.GetRealtors();
+            realtor.DataSource = realtorEntities;
+            realtor.DisplayMember = "GetInitials";
+            realtor.ValueMember = "id";
+
+
+            List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
+            type.DataSource = realtyTypeEntities;
+            type.DisplayMember = "Name";
+            type.ValueMember = "Id";
         }
         public void table()
         {
@@ -49,6 +71,7 @@ namespace vippoks
         private void Offers_Load(object sender, EventArgs e)
         {
             table();
+            change_lock();
         }
 
         private void FillDt(List<OfferEntity> offerEntities)
@@ -100,12 +123,26 @@ namespace vippoks
 
         }
 
+        private void change_lock()
+        {
+            type.Enabled = !type.Enabled;
+            client.Enabled = !client.Enabled;
+            realtor.Enabled = !realtor.Enabled;
+            price.Enabled = !price.Enabled;
+            button4.Enabled = !button4.Enabled;
+            button5.Enabled = !button5.Enabled;
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 dataGridView1.Rows[e.RowIndex].Selected = true;
                 id = int.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
+                price.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
+                client.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][3].ToString();
+                realtor.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][5].ToString();
+                type.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][7].ToString();
             }
             catch (Exception exp)
             {
@@ -117,6 +154,26 @@ namespace vippoks
         {
             OffersAdd f = new OffersAdd(this);
             f.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            change_lock();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _offersApiClient.UpdateById(id,
+                    Int32.Parse(client.SelectedValue.ToString()),Int32.Parse(realtor.SelectedValue.ToString()), 
+                    Double.Parse(price.Text),Int32.Parse(type.SelectedValue.ToString()));
+                this.Close();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
         }
     }
 }

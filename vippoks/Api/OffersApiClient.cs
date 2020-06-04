@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -88,7 +89,7 @@ namespace vippoks
             return new OfferEntity
             {
                 id     = Int32.Parse(jId.ToString()),
-                price  = Double.Parse(jPrice.ToString()),
+                price  = Double.Parse(jPrice.ToString(), CultureInfo.InvariantCulture),
                 client = jClientEntity.ToObject<ClientEntity>(),
                 realtor = jRealtorEntity.ToObject<RealtorEntity>(),
                 realty_type = jRealtyTypeEntity.ToObject<RealtyTypeEntity>()

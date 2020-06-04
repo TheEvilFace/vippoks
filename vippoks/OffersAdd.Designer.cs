@@ -100,7 +100,7 @@
             // 
             this.price.Location = new System.Drawing.Point(101, 38);
             this.price.Name = "price";
-            this.price.Mask = "#####.##";
+            this.price.Mask = "$999,999.00";
             this.price.Size = new System.Drawing.Size(100, 20);
             this.price.TabIndex = 6;
             // 
