@@ -312,6 +312,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Realties";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "realties";
             this.Load += new System.EventHandler(this.Realties_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

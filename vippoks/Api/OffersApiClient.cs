@@ -23,7 +23,7 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public void UpdateById(int id ,int client_id, int realtor_id, float price, int realty_type)
+        public void UpdateById(int id ,int client_id, int realtor_id, double price, int realty_type)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + $@"/{id}/update/");
             request.ContentType = CONTENT_TYPE;
@@ -39,13 +39,13 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public void Create( int client_id, int realtor_id, float price, int realty_type)
+        public void Create( int client_id, int realtor_id, double price, int realty_type_id)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(OFFERS_API_URL + @"/create");
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_POST;
 
-            object realtorDataRequest = new { client_id, realtor_id, price, realty_type };
+            object realtorDataRequest = new { client_id, realtor_id, price, realty_type_id };
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
@@ -88,7 +88,7 @@ namespace vippoks
             return new OfferEntity
             {
                 id     = Int32.Parse(jId.ToString()),
-                price  = Int32.Parse(jPrice.ToString()),
+                price  = Double.Parse(jPrice.ToString()),
                 client = jClientEntity.ToObject<ClientEntity>(),
                 realtor = jRealtorEntity.ToObject<RealtorEntity>(),
                 realty_type = jRealtyTypeEntity.ToObject<RealtyTypeEntity>()

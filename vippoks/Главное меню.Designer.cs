@@ -147,6 +147,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Главное_меню";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главное_меню";
             this.Load += new System.EventHandler(this.Главное_меню_Load);
             this.menuStrip1.ResumeLayout(false);

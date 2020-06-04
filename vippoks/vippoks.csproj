@@ -99,6 +99,12 @@
     <Compile Include="Offers.Designer.cs">
       <DependentUpon>Offers.cs</DependentUpon>
     </Compile>
+    <Compile Include="OffersAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OffersAdd.Designer.cs">
+      <DependentUpon>OffersAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Realties.cs">
@@ -140,8 +146,14 @@
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Needs.resx">
+      <DependentUpon>Needs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Offers.resx">
       <DependentUpon>Offers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OffersAdd.resx">
+      <DependentUpon>OffersAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -25,15 +25,15 @@ namespace vippoks
             _realtorApiClient = new RealtorApiClient();
             _realtiesApiClient = new RealtiesApiClient();
             
-            List<ClientApiClient> clientApiClient = _clientApiClient.GetTypes();
-            type.DataSource = clientApiClient;
-            type.DisplayMember = "surname";
-            type.ValueMember = "Id";
+            List<ClientEntity> clientEntities = _clientApiClient.GetClients();
+            client.DataSource = clientEntities;
+            client.DisplayMember = "GetInitials";
+            client.ValueMember = "id";
             
-            List<RealtorApiClient> clientApiClient = _realtorApiClient.GetTypes();
-            type.DataSource = clientApiClient;
-            type.DisplayMember = "surname";
-            type.ValueMember = "Id";
+            List<RealtorEntity> realtorEntities = _realtorApiClient.GetRealtors();
+            realtor.DataSource = realtorEntities;
+            realtor.DisplayMember = "GetInitials";
+            realtor.ValueMember = "id";
 
 
             List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
@@ -59,11 +59,12 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(type.SelectedValue.ToString());
             try
             {
-                _offersApiClient.Create(Int32.Parse(price.Text),
-                Int32.Parse(client.SelectedValue.ToString()), Int32.Parse(realtor.SelectedValue.ToString())
-                , Int32.Parse(type.SelectedValue.ToString()));
+                _offersApiClient.Create(Int32.Parse(client.SelectedValue.ToString()), 
+              Int32.Parse(realtor.SelectedValue.ToString()) , Double.Parse(price.Text),
+              Int32.Parse(type.SelectedValue.ToString()));
                 this.Close();
             }
             catch (Exception exp)

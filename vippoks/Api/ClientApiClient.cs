@@ -62,11 +62,11 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public List<ClientEntity> GetTypes()
+        public List<ClientEntity> GetClients()
         {
             List<ClientEntity> сlientEntities = new List<ClientEntity>();
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + @"/types/get");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + @"/get");
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_GET;
 

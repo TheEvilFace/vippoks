@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.price = new System.Windows.Forms.TextBox();
+            this.price = new System.Windows.Forms.MaskedTextBox();
             this.client = new System.Windows.Forms.ComboBox();
             this.realtor = new System.Windows.Forms.ComboBox();
             this.type = new System.Windows.Forms.ComboBox();
@@ -100,6 +100,7 @@
             // 
             this.price.Location = new System.Drawing.Point(101, 38);
             this.price.Name = "price";
+            this.price.Mask = "#####.##";
             this.price.Size = new System.Drawing.Size(100, 20);
             this.price.TabIndex = 6;
             // 
@@ -143,6 +144,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "OffersAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OffersAdd";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OffersAdd_FormClosing);
             this.Load += new System.EventHandler(this.OffersAdd_Load);
@@ -159,7 +161,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox price;
+        private System.Windows.Forms.MaskedTextBox price;
         private System.Windows.Forms.ComboBox client;
         private System.Windows.Forms.ComboBox realtor;
         private System.Windows.Forms.ComboBox type;
