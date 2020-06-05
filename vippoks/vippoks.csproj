@@ -63,8 +63,10 @@
     <Compile Include="Api\ClientApiClient.cs" />
     <Compile Include="Api\Entities\ApiDefaultResponse.cs" />
     <Compile Include="Api\Entities\ClientEntity.cs" />
+    <Compile Include="Api\Entities\NeedsEntity.cs" />
     <Compile Include="Api\Entities\RealtorEntity.cs" />
     <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
+    <Compile Include="Api\NeedsApiClient.cs" />
     <Compile Include="Api\OffersApiClient.cs" />
     <Compile Include="Api\Entities\OfferEntity.cs" />
     <Compile Include="Api\RealtiesApiClient.cs" />
