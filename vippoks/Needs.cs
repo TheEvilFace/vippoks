@@ -28,7 +28,7 @@ namespace vippoks
             _realtorApiClient = new RealtorApiClient();
             _realtiesApiClient = new RealtiesApiClient();
             
-            this.InitComboboxes();
+            this.InitCombos();
         }
         public void table()
         {
@@ -160,7 +160,7 @@ namespace vippoks
             }*/
         }
 
-        private void InitComboboxes()
+        private void InitCombos()
         {
             List<ClientEntity> clientEntities = _clientApiClient.GetClients();
             client.DataSource = clientEntities;
