@@ -24,38 +24,38 @@ namespace vippoks
                 this.makeRequest(request);
             }
 
-            public void UpdateById(int id, int client_id, int realtor_id, double price, int realty_type)
+            public void UpdateById(int id, int client_id, int realtor_id, double min_price, double max_price, int realty_type)
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(NEEDS_API_URL + $@"/{id}/update/");
                 request.ContentType = CONTENT_TYPE;
                 request.Method = METHOD_POST;
 
-                object realtorDataRequest = new { client_id, realtor_id, price, realty_type };
+                object needsDataRequest = new { client_id, realtor_id, realty_type, min_price, max_price };
 
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
-                    streamWriter.Write(JsonConvert.SerializeObject(realtorDataRequest));
+                    streamWriter.Write(JsonConvert.SerializeObject(needsDataRequest));
                 }
 
                 this.makeRequest(request);
             }
 
-            public void Create(int client_id, int realtor_id, double price, int realty_type_id)
+            public void Create(int client_id, int realtor_id, double min_price, double max_price, int realty_type)
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(NEEDS_API_URL + @"/create");
                 request.ContentType = CONTENT_TYPE;
                 request.Method = METHOD_POST;
 
-                object realtorDataRequest = new { client_id, realtor_id, price, realty_type_id };
+                object needsDataRequest = new { client_id, realtor_id, realty_type, min_price, max_price };
 
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
-                    streamWriter.Write(JsonConvert.SerializeObject(realtorDataRequest));
+                    streamWriter.Write(JsonConvert.SerializeObject(needsDataRequest));
                 }
 
                 this.makeRequest(request);
             }
-            public List<NeedsEntity> GetTypes()
+            public List<NeedsEntity> GetNeeds()
             {
                 List<NeedsEntity> needsEntity = new List<NeedsEntity>();
 
@@ -71,13 +71,13 @@ namespace vippoks
 
                 foreach (JObject type in types)
                 {
-                    needsEntity.Add(getOfferFromJson(type));
+                    needsEntity.Add(GetNeedsFromJson(type));
                 }
 
                 return needsEntity;
             }
 
-            private NeedsEntity getOfferFromJson(JObject jObject)
+            private NeedsEntity GetNeedsFromJson(JObject jObject)
             {
                 JObject jNeedsEntity = JObject.Parse(jObject.ToString());
                 JToken jId = jNeedsEntity["id"];

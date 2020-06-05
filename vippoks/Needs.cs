@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using vippoks.Api.Entities;
 
@@ -26,26 +27,12 @@ namespace vippoks
             _clientApiClient = new ClientApiClient();
             _realtorApiClient = new RealtorApiClient();
             _realtiesApiClient = new RealtiesApiClient();
-
-            List<ClientEntity> clientEntities = _clientApiClient.GetClients();
-            client.DataSource = clientEntities;
-            client.DisplayMember = "GetInitials";
-            client.ValueMember = "id";
-
-            List<RealtorEntity> realtorEntities = _realtorApiClient.GetRealtors();
-            realtor.DataSource = realtorEntities;
-            realtor.DisplayMember = "GetInitials";
-            realtor.ValueMember = "id";
-
-
-            List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
-            type.DataSource = realtyTypeEntities;
-            type.DisplayMember = "Name";
-            type.ValueMember = "Id";
+            
+            this.InitComboboxes();
         }
         public void table()
         {
-            List<NeedsEntity> needsEntities = _needsApiClient.GetTypes();
+            List<NeedsEntity> needsEntities = _needsApiClient.GetNeeds();
             FillDt(needsEntities);
             dataGridView1.DataSource = dt;
             try
@@ -74,25 +61,25 @@ namespace vippoks
             change_lock();
         }
 
-        private void FillDt(List<NeedsEntity> offerEntities)
+        private void FillDt(List<NeedsEntity> needsEntities)
         {
             dt.Clear();
-            foreach (var offerEntity in offerEntities)
+            foreach (var needsEntity in needsEntities)
             {
                 DataRow row = dt.NewRow();
 
-                row["id"] = offerEntity.id;
-                row["MinPrice"] = offerEntity.minPrice;
-                row["MaxPrice"] = offerEntity.maxPrice;
+                row["id"] = needsEntity.id;
+                row["MinPrice"] = needsEntity.minPrice;
+                row["MaxPrice"] = needsEntity.maxPrice;
 
-                row["Client_id"] = offerEntity.client.id;
-                row["Client"] = $@"{offerEntity.client.surname} {offerEntity.client.name} {offerEntity.client.patronymic}";
+                row["Client_id"] = needsEntity.client.id;
+                row["Client"] = $@"{needsEntity.client.surname} {needsEntity.client.name} {needsEntity.client.patronymic}";
 
-                row["Realtor_id"] = offerEntity.realtor.id;
-                row["Realtor"] = $@"{offerEntity.realtor.surname} {offerEntity.realtor.name} {offerEntity.realtor.patronymic}";
+                row["Realtor_id"] = needsEntity.realtor.id;
+                row["Realtor"] = $@"{needsEntity.realtor.surname} {needsEntity.realtor.name} {needsEntity.realtor.patronymic}";
 
-                row["Realty_id"] = offerEntity.realty_type.Id;
-                row["Realty"] = offerEntity.realty_type.Name;
+                row["Realty_id"] = needsEntity.realty_type.Id;
+                row["Realty"] = needsEntity.realty_type.Name;
 
                 dt.Rows.Add(row);
             }
@@ -149,7 +136,7 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-           /* OffersAdd f = new OffersAdd(this);
+           /* OffersAdd f = new OffersAdd(this); //todo: не offers а needs
             f.Show();*/
         }
 
@@ -171,6 +158,25 @@ namespace vippoks
             {
                 MessageBox.Show(exp.ToString());
             }*/
+        }
+
+        private void InitComboboxes()
+        {
+            List<ClientEntity> clientEntities = _clientApiClient.GetClients();
+            client.DataSource = clientEntities;
+            client.DisplayMember = "GetInitials";
+            client.ValueMember = "id";
+
+            List<RealtorEntity> realtorEntities = _realtorApiClient.GetRealtors();
+            realtor.DataSource = realtorEntities;
+            realtor.DisplayMember = "GetInitials";
+            realtor.ValueMember = "id";
+
+
+            List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
+            type.DataSource = realtyTypeEntities;
+            type.DisplayMember = "Name";
+            type.ValueMember = "Id";
         }
     }
 }
