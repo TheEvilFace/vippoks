@@ -79,13 +79,13 @@ namespace vippoks
 
             private NeedsEntity getOfferFromJson(JObject jObject)
             {
-                JObject jOfferEntity = JObject.Parse(jObject.ToString());
-                JToken jId = jOfferEntity["id"];
-                JToken jMinPrice = jOfferEntity["min_price"];
-                JToken jMaxPrice = jOfferEntity["max_price"];
-                JToken jClientEntity = jOfferEntity["client"];
-                JToken jRealtorEntity = jOfferEntity["realtor"];
-                JToken jRealtyTypeEntity = jOfferEntity["realty_type"];
+                JObject jNeedsEntity = JObject.Parse(jObject.ToString());
+                JToken jId = jNeedsEntity["id"];
+                JToken jMinPrice = jNeedsEntity["min_price"];
+                JToken jMaxPrice = jNeedsEntity["max_price"];
+                JToken jClientEntity = jNeedsEntity["client"];
+                JToken jRealtorEntity = jNeedsEntity["realtor"];
+                JToken jRealtyTypeEntity = jNeedsEntity["realty_type"];
 
                 return new NeedsEntity
                 {
