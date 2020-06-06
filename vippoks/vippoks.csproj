@@ -66,6 +66,12 @@
     <Compile Include="Api\Entities\NeedsEntity.cs" />
     <Compile Include="Api\Entities\RealtorEntity.cs" />
     <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
+    <Compile Include="Api\NeedsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Api\NeedsAdd.Designer.cs">
+      <DependentUpon>NeedsAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Api\NeedsApiClient.cs" />
     <Compile Include="Api\OffersApiClient.cs" />
     <Compile Include="Api\Entities\OfferEntity.cs" />
@@ -139,6 +145,9 @@
     <Compile Include="Главное меню.Designer.cs">
       <DependentUpon>Главное меню.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Api\NeedsAdd.resx">
+      <DependentUpon>NeedsAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>

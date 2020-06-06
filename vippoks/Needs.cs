@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -112,7 +113,8 @@ namespace vippoks
             type.Enabled = !type.Enabled;
             client.Enabled = !client.Enabled;
             realtor.Enabled = !realtor.Enabled;
-            price.Enabled = !price.Enabled;
+            MinPrice.Enabled = !MinPrice.Enabled;
+            MaxPrice.Enabled = !MaxPrice.Enabled;
             button4.Enabled = !button4.Enabled;
             button5.Enabled = !button5.Enabled;
         }
@@ -123,10 +125,11 @@ namespace vippoks
             {
                 dataGridView1.Rows[e.RowIndex].Selected = true;
                 id = int.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
-                /*price.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
-                client.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][3].ToString();
-                realtor.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][5].ToString();
-                type.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][7].ToString();*/
+                MinPrice.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
+                MaxPrice.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][2].ToString();
+                client.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][4].ToString();
+                realtor.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][6].ToString();
+                type.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][8].ToString();
             }
             catch (Exception exp)
             {
@@ -136,8 +139,8 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-           /* OffersAdd f = new OffersAdd(this); //todo: не offers а needs
-            f.Show();*/
+            NeedsAdd f = new NeedsAdd(this); //todo: не offers а needs
+            f.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -147,17 +150,19 @@ namespace vippoks
 
         private void button5_Click(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 _needsApiClient.UpdateById(id,
                     Int32.Parse(client.SelectedValue.ToString()), Int32.Parse(realtor.SelectedValue.ToString()),
-                    Double.Parse(price.Text), Int32.Parse(type.SelectedValue.ToString()));
-                this.Close();
+                    Double.Parse(MinPrice.Text, CultureInfo.InvariantCulture), Double.Parse(MaxPrice.Text, CultureInfo.InvariantCulture),  
+                    Int32.Parse(type.SelectedValue.ToString()));
+                table();
+                change_lock();
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.ToString());
-            }*/
+            }
         }
 
         private void InitCombos()

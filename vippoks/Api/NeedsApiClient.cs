@@ -24,13 +24,13 @@ namespace vippoks
                 this.makeRequest(request);
             }
 
-            public void UpdateById(int id, int client_id, int realtor_id, double min_price, double max_price, int realty_type)
+            public void UpdateById(int id, int client_id, int realtor_id, double min_price, double max_price, int realty_type_id)
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(NEEDS_API_URL + $@"/{id}/update/");
                 request.ContentType = CONTENT_TYPE;
                 request.Method = METHOD_POST;
 
-                object needsDataRequest = new { client_id, realtor_id, realty_type, min_price, max_price };
+                object needsDataRequest = new { client_id, realtor_id, realty_type_id, min_price, max_price };
 
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
@@ -40,13 +40,13 @@ namespace vippoks
                 this.makeRequest(request);
             }
 
-            public void Create(int client_id, int realtor_id, double min_price, double max_price, int realty_type)
+            public void Create(int client_id, int realtor_id, double min_price, double max_price, int realty_type_id)
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(NEEDS_API_URL + @"/create");
                 request.ContentType = CONTENT_TYPE;
                 request.Method = METHOD_POST;
 
-                object needsDataRequest = new { client_id, realtor_id, realty_type, min_price, max_price };
+                object needsDataRequest = new { client_id, realtor_id, realty_type_id, min_price, max_price };
 
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {

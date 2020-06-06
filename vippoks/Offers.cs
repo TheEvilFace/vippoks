@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using vippoks.Api.Entities;
@@ -167,8 +168,9 @@ namespace vippoks
             {
                 _offersApiClient.UpdateById(id,
                     Int32.Parse(client.SelectedValue.ToString()),Int32.Parse(realtor.SelectedValue.ToString()), 
-                    Double.Parse(price.Text),Int32.Parse(type.SelectedValue.ToString()));
-                this.Close();
+                    Double.Parse(price.Text, CultureInfo.InvariantCulture),Int32.Parse(type.SelectedValue.ToString()));
+                change_lock();
+                table();
             }
             catch (Exception exp)
             {
