@@ -52,5 +52,11 @@ namespace vippoks
         {
 
         }
+
+        private void сделкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Deals f = new Deals();
+            f.Show();
+        }
     }
 }

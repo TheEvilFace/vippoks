@@ -139,7 +139,7 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NeedsAdd f = new NeedsAdd(this); //todo: не offers а needs
+            NeedsAdd f = new NeedsAdd(this);
             f.Show();
         }
 

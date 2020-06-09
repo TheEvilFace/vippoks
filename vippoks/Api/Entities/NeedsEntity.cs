@@ -14,5 +14,13 @@ namespace vippoks.Api.Entities
         public ClientEntity client { get; set; }
         public RealtorEntity realtor { get; set; }
         public RealtyTypeEntity realty_type { get; set; }
+
+        public string GetNeed
+        {
+            get
+            {
+                return client.GetInitials + " мин:" + minPrice + " макс:" + maxPrice;
+            }
+        }
     }
 }

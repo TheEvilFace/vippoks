@@ -61,15 +61,29 @@
     <Compile Include="Api\AuthApiClient.cs" />
     <Compile Include="Api\BaseApiClient.cs" />
     <Compile Include="Api\ClientApiClient.cs" />
+    <Compile Include="Api\DealsApiClient.cs" />
     <Compile Include="Api\Entities\ApiDefaultResponse.cs" />
     <Compile Include="Api\Entities\ClientEntity.cs" />
+    <Compile Include="Api\Entities\DealEntity.cs" />
     <Compile Include="Api\Entities\NeedsEntity.cs" />
     <Compile Include="Api\Entities\RealtorEntity.cs" />
     <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
-    <Compile Include="Api\NeedsAdd.cs">
+    <Compile Include="Deals.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Api\NeedsAdd.Designer.cs">
+    <Compile Include="Deals.Designer.cs">
+      <DependentUpon>Deals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DealsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DealsAdd.Designer.cs">
+      <DependentUpon>DealsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NeedsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NeedsAdd.Designer.cs">
       <DependentUpon>NeedsAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Api\NeedsApiClient.cs" />
@@ -145,7 +159,13 @@
     <Compile Include="Главное меню.Designer.cs">
       <DependentUpon>Главное меню.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Api\NeedsAdd.resx">
+    <EmbeddedResource Include="Deals.resx">
+      <DependentUpon>Deals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DealsAdd.resx">
+      <DependentUpon>DealsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NeedsAdd.resx">
       <DependentUpon>NeedsAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
