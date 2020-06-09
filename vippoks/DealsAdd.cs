@@ -71,23 +71,23 @@ namespace vippoks
         private void raschet()
         {
             if (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realtor.part_percentage != 0)
-                realtorbuy.Text = ((int.Parse(sell.Text) + int.Parse(buy.Text)) * (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realtor.part_percentage / 100)).ToString();
+                realtorsell.Text = ((Double.Parse(sell.Text) + Double.Parse(buy.Text)) * offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realtor.part_percentage / 100).ToString();
             else
-                realtorbuy.Text = (int.Parse(sell.Text) + int.Parse(buy.Text) * 0.45).ToString();
+                realtorsell.Text = ((Double.Parse(sell.Text) + Double.Parse(buy.Text)) * 0.45).ToString();
 
-            if (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realtor.part_percentage != 0)
-                realtorsell.Text = (int.Parse(sell.Text) + int.Parse(buy.Text) * needsEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realtor.part_percentage).ToString();
+            if (needsEntities.Find(x => x.id == Int32.Parse(need.SelectedValue.ToString())).realtor.part_percentage != 0)
+                realtorbuy.Text = ((Double.Parse(sell.Text) + Double.Parse(buy.Text)) * needsEntities.Find(x => x.id == Int32.Parse(need.SelectedValue.ToString())).realtor.part_percentage / 100).ToString();
             else
-                realtorsell.Text = (int.Parse(sell.Text) + int.Parse(buy.Text) * 0.45).ToString();
+                realtorbuy.Text = ((Double.Parse(sell.Text) + Double.Parse(buy.Text)) * 0.45).ToString();
 
-            company.Text = (int.Parse(sell.Text) + int.Parse(buy.Text)).ToString();
+            company.Text = (Double.Parse(sell.Text) + Double.Parse(buy.Text)).ToString();
         }
 
         private void offer_SelectedValueChanged(object sender, EventArgs e)
         {
             try
             {
-                buy.Text = (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).price * 0.03).ToString(); ;
+                buy.Text = (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).price * 0.03).ToString();
                 switch (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realty_type.Name)
                 {
                     case "Квартира":
@@ -106,8 +106,9 @@ namespace vippoks
                 }
 
             }
-            catch  // Тут не нужно ловить Exeption
+            catch(Exception exp)  // Тут не нужно ловить Exception
             {
+                MessageBox.Show(exp.ToString());
             }
         }
     }
