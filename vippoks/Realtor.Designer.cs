@@ -42,13 +42,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
+            this.lableads = new System.Windows.Forms.Label();
+            this.idRealtor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox4
             // 
             this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(637, 96);
+            this.textBox4.Location = new System.Drawing.Point(637, 134);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 38;
@@ -56,7 +59,7 @@
             // textBox3
             // 
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(637, 70);
+            this.textBox3.Location = new System.Drawing.Point(637, 108);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 37;
@@ -64,7 +67,7 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(637, 44);
+            this.textBox2.Location = new System.Drawing.Point(637, 82);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 36;
@@ -72,7 +75,7 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(637, 18);
+            this.textBox1.Location = new System.Drawing.Point(637, 56);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 35;
@@ -81,7 +84,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(535, 99);
+            this.label4.Location = new System.Drawing.Point(535, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 33;
@@ -91,7 +94,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(535, 73);
+            this.label3.Location = new System.Drawing.Point(535, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 32;
@@ -101,7 +104,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(535, 47);
+            this.label2.Location = new System.Drawing.Point(535, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 31;
@@ -111,7 +114,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
-            this.label1.Location = new System.Drawing.Point(537, 21);
+            this.label1.Location = new System.Drawing.Point(537, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 30;
@@ -120,7 +123,7 @@
             // button4
             // 
             this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(536, 130);
+            this.button4.Location = new System.Drawing.Point(536, 168);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(76, 40);
             this.button4.TabIndex = 29;
@@ -130,7 +133,7 @@
             // button5
             // 
             this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(663, 130);
+            this.button5.Location = new System.Drawing.Point(663, 168);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(76, 40);
             this.button5.TabIndex = 28;
@@ -140,7 +143,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(432, 208);
+            this.button3.Location = new System.Drawing.Point(432, 246);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(98, 43);
             this.button3.TabIndex = 27;
@@ -150,7 +153,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(225, 208);
+            this.button2.Location = new System.Drawing.Point(225, 246);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 43);
             this.button2.TabIndex = 26;
@@ -160,7 +163,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 209);
+            this.button1.Location = new System.Drawing.Point(12, 247);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 43);
             this.button1.TabIndex = 25;
@@ -172,18 +175,47 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(518, 190);
             this.dataGridView1.TabIndex = 24;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(357, 23);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(98, 21);
+            this.button6.TabIndex = 45;
+            this.button6.Text = "Найти";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // lableads
+            // 
+            this.lableads.AutoSize = true;
+            this.lableads.Location = new System.Drawing.Point(198, 26);
+            this.lableads.Name = "lableads";
+            this.lableads.Size = new System.Drawing.Size(19, 13);
+            this.lableads.TabIndex = 42;
+            this.lableads.Text = "Id:";
+            // 
+            // idRealtor
+            // 
+            this.idRealtor.Location = new System.Drawing.Point(236, 23);
+            this.idRealtor.Name = "idRealtor";
+            this.idRealtor.Size = new System.Drawing.Size(100, 20);
+            this.idRealtor.TabIndex = 39;
+            // 
             // Realtor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 261);
+            this.ClientSize = new System.Drawing.Size(751, 304);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.lableads);
+            this.Controls.Add(this.idRealtor);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -224,5 +256,9 @@
         private System.Windows.Forms.TextBox textBox4;
 
         #endregion
+
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label lableads;
+        private System.Windows.Forms.TextBox idRealtor;
     }
 }

@@ -61,6 +61,22 @@ namespace vippoks
 
             this.makeRequest(request);
         }
+        public ApiDefaultResponse FindUser(string name, string surname, string patronymic)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + @"/find");
+            
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_POST;
+
+            object clientDataRequest = new {name, surname, patronymic};
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(clientDataRequest));
+            }
+
+           
+            return JsonConvert.DeserializeObject<ApiDefaultResponse>(this.makeRequest(request));
+        }
 
         public List<ClientEntity> GetClients()
         {

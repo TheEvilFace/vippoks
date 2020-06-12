@@ -21,13 +21,24 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public ApiDefaultResponse Get()
+        public ApiDefaultResponse Get(int id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + @"/get");
-            request.ContentType = CONTENT_TYPE;
-            request.Method = METHOD_GET;
-            string res = this.makeRequest(request);
-            return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+            if(id != 0)
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + $@"/{id}/get" );
+                request.ContentType = CONTENT_TYPE;
+                request.Method = METHOD_GET;
+                string res = this.makeRequest(request);
+                return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+            }
+            else
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + @"/get");
+                request.ContentType = CONTENT_TYPE;
+                request.Method = METHOD_GET;
+                string res = this.makeRequest(request);
+                return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+            }
         }
 
         public void UpdateById(int id, string name, string surname, string patronymic, string partPercentage)

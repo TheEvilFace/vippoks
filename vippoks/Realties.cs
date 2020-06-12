@@ -88,6 +88,10 @@ namespace vippoks
             type_id.DataSource = realtyTypeEntities;
             type_id.DisplayMember = "Name";
             type_id.ValueMember = "Id";
+
+            type.DataSource = realtyTypeEntities;
+            type.DisplayMember = "Name";
+            type.ValueMember = "Id";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -137,6 +141,43 @@ namespace vippoks
         {
             RealtiesAdd f = new RealtiesAdd(this);
             f.Show();
+        }
+
+        private void type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var apiResponse = _realtiesApiClient.GetByType(Int32.Parse(type.SelectedValue.ToString()));
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns.Remove("id");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                var apiResponse = _realtiesApiClient.FindByLatLong(textBox1.Text, textBox2.Text);
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns.Remove("id");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }
