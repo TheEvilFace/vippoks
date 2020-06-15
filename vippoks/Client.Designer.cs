@@ -209,14 +209,14 @@
             // 
             // surname
             // 
-            this.surname.Location = new System.Drawing.Point(71, 13);
+            this.surname.Location = new System.Drawing.Point(246, 12);
             this.surname.Name = "surname";
             this.surname.Size = new System.Drawing.Size(100, 20);
             this.surname.TabIndex = 24;
             // 
             // name
             // 
-            this.name.Location = new System.Drawing.Point(240, 13);
+            this.name.Location = new System.Drawing.Point(57, 12);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(100, 20);
             this.name.TabIndex = 25;
@@ -231,7 +231,7 @@
             // lableads
             // 
             this.lableads.AutoSize = true;
-            this.lableads.Location = new System.Drawing.Point(9, 16);
+            this.lableads.Location = new System.Drawing.Point(184, 15);
             this.lableads.Name = "lableads";
             this.lableads.Size = new System.Drawing.Size(56, 13);
             this.lableads.TabIndex = 27;
@@ -240,7 +240,7 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(205, 16);
+            this.label.Location = new System.Drawing.Point(22, 15);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(29, 13);
             this.label.TabIndex = 28;

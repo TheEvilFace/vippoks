@@ -23,22 +23,11 @@ namespace vippoks
 
         public ApiDefaultResponse Get(int id)
         {
-            if(id != 0)
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + $@"/{id}/get" );
-                request.ContentType = CONTENT_TYPE;
-                request.Method = METHOD_GET;
-                string res = this.makeRequest(request);
-                return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
-            }
-            else
-            {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + @"/get");
                 request.ContentType = CONTENT_TYPE;
                 request.Method = METHOD_GET;
                 string res = this.makeRequest(request);
                 return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
-            }
         }
 
         public void UpdateById(int id, string name, string surname, string patronymic, string partPercentage)
@@ -71,6 +60,22 @@ namespace vippoks
             }
 
             this.makeRequest(request);
+        }
+        public ApiDefaultResponse FindUser(string name, string surname, string patronymic)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + @"/find");
+
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_POST;
+
+            object clientDataRequest = new { name, surname, patronymic };
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(clientDataRequest));
+            }
+
+
+            return JsonConvert.DeserializeObject<ApiDefaultResponse>(this.makeRequest(request));
         }
 
         public List<RealtorEntity> GetRealtors()

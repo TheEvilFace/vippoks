@@ -7,7 +7,7 @@ namespace vippoks
 {
     public class BaseApiClient
     {
-        protected const string API_BASE_URL = "http://213.80.186.203:6782/api";
+        protected const string API_BASE_URL = "http://213.80.185.31:6782/api";
         protected const string CONTENT_TYPE = "application/json";
         protected const string METHOD_POST = "POST";
         protected const string METHOD_GET = "GET";

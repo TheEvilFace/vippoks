@@ -182,6 +182,43 @@ namespace vippoks
             type.DataSource = realtyTypeEntities;
             type.DisplayMember = "Name";
             type.ValueMember = "Id";
+
+            List<ClientEntity> ComboclientEntities = _clientApiClient.GetClients();
+            ComboclientEntities.Add(new ClientEntity() { name = " ", id = 0, patronymic = " ", surname = "Любой", phone = " ", email = " " });
+            comboclient.DataSource = ComboclientEntities;
+            comboclient.DisplayMember = "GetInitials";
+            comboclient.ValueMember = "id";
+
+            List<RealtorEntity> ComborealtorEntities = _realtorApiClient.GetRealtors();
+            ComborealtorEntities.Add(new RealtorEntity() { name = " ", id = 0, part_percentage = 0, patronymic = " ", surname = "Любой" });
+            rieltor.DataSource = ComborealtorEntities;
+            rieltor.DisplayMember = "GetInitials";
+            rieltor.ValueMember = "id";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            List<NeedsEntity> needsEntities = _needsApiClient.Find(Int32.Parse(comboclient.SelectedValue.ToString()), Int32.Parse(rieltor.SelectedValue.ToString()));
+            FillDt(needsEntities);
+            dataGridView1.DataSource = dt;
+            try
+            {
+                if (dataGridView1.Columns.Contains("id"))
+                    dataGridView1.Columns.Remove("id");
+
+                if (dataGridView1.Columns.Contains("Client_id"))
+                    dataGridView1.Columns.Remove("Client_id");
+
+                if (dataGridView1.Columns.Contains("Realtor_id"))
+                    dataGridView1.Columns.Remove("Realtor_id");
+
+                if (dataGridView1.Columns.Contains("Realty_id"))
+                    dataGridView1.Columns.Remove("Realty_id");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }

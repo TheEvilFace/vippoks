@@ -55,7 +55,35 @@ namespace vippoks
 
                 this.makeRequest(request);
             }
-            public List<NeedsEntity> GetNeeds()
+
+        public List<NeedsEntity> Find(int client_id, int realtor_id)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(NEEDS_API_URL + @"/get-by-participants");
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_POST;
+            List<NeedsEntity> needsEntity = new List<NeedsEntity>();
+
+            object realtorDataRequest = new { client_id, realtor_id };
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(realtorDataRequest));
+            }
+
+            string res = this.makeRequest(request);
+
+            ApiDefaultResponse defaultResponse = JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+
+            JArray innerResponse = (JArray)defaultResponse.response;
+            JObject[] types = innerResponse.Select(jv => (JObject)jv).ToArray();
+
+            foreach (JObject type in types)
+            {
+                needsEntity.Add(GetNeedsFromJson(type));
+            }
+            return needsEntity;
+        }
+        public List<NeedsEntity> GetNeeds()
             {
                 List<NeedsEntity> needsEntity = new List<NeedsEntity>();
 

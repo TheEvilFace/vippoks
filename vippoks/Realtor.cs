@@ -115,7 +115,27 @@ namespace vippoks
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            table(int.Parse(idRealtor.Text));
+            try
+            {
+                ApiDefaultResponse apiResponse = _realtorApiClient.FindUser(name.Text,
+                    surname.Text, patronomic.Text);
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), (typeof(DataTable)));
+
+                dataGridView1.DataSource = dt;
+                try
+                {
+                    dataGridView1.Columns.Remove("id");
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }

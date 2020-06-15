@@ -42,7 +42,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
+            this.comboclient = new System.Windows.Forms.ComboBox();
+            this.rieltor = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -174,11 +179,60 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Цена";
             // 
+            // comboclient
+            // 
+            this.comboclient.FormattingEnabled = true;
+            this.comboclient.Location = new System.Drawing.Point(70, 17);
+            this.comboclient.Name = "comboclient";
+            this.comboclient.Size = new System.Drawing.Size(121, 21);
+            this.comboclient.TabIndex = 18;
+            // 
+            // rieltor
+            // 
+            this.rieltor.FormattingEnabled = true;
+            this.rieltor.Location = new System.Drawing.Point(271, 17);
+            this.rieltor.Name = "rieltor";
+            this.rieltor.Size = new System.Drawing.Size(121, 21);
+            this.rieltor.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Клиент";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(216, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Риелтор";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(402, 12);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 31);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "Найти";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Offers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 307);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.rieltor);
+            this.Controls.Add(this.comboclient);
             this.Controls.Add(this.type);
             this.Controls.Add(this.realtor);
             this.Controls.Add(this.client);
@@ -197,9 +251,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Offers";
             this.Load += new System.EventHandler(this.Offers_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Button button1;
@@ -218,5 +273,11 @@
         private System.Windows.Forms.ComboBox type;
 
         #endregion
+
+        private System.Windows.Forms.ComboBox comboclient;
+        private System.Windows.Forms.ComboBox rieltor;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button6;
     }
 }

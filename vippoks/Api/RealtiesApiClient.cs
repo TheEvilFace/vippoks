@@ -69,14 +69,14 @@ namespace vippoks
 
             this.makeRequest(request);
         }
-        public ApiDefaultResponse FindByLatLong( string latitude, string longitude)
+        public ApiDefaultResponse FindByLatLong( float x1, float y1, float x2, float y2)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/create");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/find-by-coords");
 
             request.ContentType = CONTENT_TYPE;
             request.Method = METHOD_POST;
 
-            object realtiesDataRequest = new { latitude, longitude };
+            object realtiesDataRequest = new { x1, y1, x2, y2 };
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 streamWriter.Write(JsonConvert.SerializeObject(realtiesDataRequest));
