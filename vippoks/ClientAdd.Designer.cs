@@ -1,6 +1,6 @@
 ﻿namespace vippoks
 {
-    partial class client_add
+    partial class ClientAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -142,7 +142,7 @@
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 11;
             // 
-            // client_add
+            // ClientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,15 +159,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "client_add";
+            this.Name = "ClientAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "client_add";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.client_add_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
-        #endregion
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -181,5 +180,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+
+        #endregion
     }
 }

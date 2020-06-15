@@ -63,9 +63,9 @@ namespace vippoks.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap unnamed {
+        internal static System.Drawing.Bitmap unnamed1 {
             get {
-                object obj = ResourceManager.GetObject("unnamed", resourceCulture);
+                object obj = ResourceManager.GetObject("unnamed1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

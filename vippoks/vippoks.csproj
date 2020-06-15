@@ -38,6 +38,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,47 +52,106 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebApiContrib.Formatting.JavaScriptSerializer, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\WebApiContrib.Formatting.JavaScriptSerializer.0.9.4.0\lib\net40\WebApiContrib.Formatting.JavaScriptSerializer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="api_default.cs" />
-    <Compile Include="client.cs">
+    <Compile Include="Api\AuthApiClient.cs" />
+    <Compile Include="Api\BaseApiClient.cs" />
+    <Compile Include="Api\ClientApiClient.cs" />
+    <Compile Include="Api\DealsApiClient.cs" />
+    <Compile Include="Api\Entities\ApiDefaultResponse.cs" />
+    <Compile Include="Api\Entities\ClientEntity.cs" />
+    <Compile Include="Api\Entities\DealEntity.cs" />
+    <Compile Include="Api\Entities\NeedsEntity.cs" />
+    <Compile Include="Api\Entities\RealtorEntity.cs" />
+    <Compile Include="Api\Entities\RealtyTypeEntity.cs" />
+    <Compile Include="Deals.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="client.Designer.cs">
-      <DependentUpon>client.cs</DependentUpon>
+    <Compile Include="Deals.Designer.cs">
+      <DependentUpon>Deals.cs</DependentUpon>
     </Compile>
-    <Compile Include="client_add.cs">
+    <Compile Include="DealsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="client_add.Designer.cs">
-      <DependentUpon>client_add.cs</DependentUpon>
+    <Compile Include="DealsAdd.Designer.cs">
+      <DependentUpon>DealsAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="client_list.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="NeedsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="NeedsAdd.Designer.cs">
+      <DependentUpon>NeedsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Api\NeedsApiClient.cs" />
+    <Compile Include="Api\OffersApiClient.cs" />
+    <Compile Include="Api\Entities\OfferEntity.cs" />
+    <Compile Include="Api\RealtiesApiClient.cs" />
+    <Compile Include="Api\RealtorApiClient.cs" />
+    <Compile Include="Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientAdd.Designer.cs">
+      <DependentUpon>ClientAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Auth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auth.Designer.cs">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Needs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Needs.Designer.cs">
+      <DependentUpon>Needs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Offers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Offers.Designer.cs">
+      <DependentUpon>Offers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OffersAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OffersAdd.Designer.cs">
+      <DependentUpon>OffersAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="realties.cs">
+    <Compile Include="Realties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="realties.Designer.cs">
-      <DependentUpon>realties.cs</DependentUpon>
+    <Compile Include="Realties.Designer.cs">
+      <DependentUpon>Realties.cs</DependentUpon>
     </Compile>
-    <Compile Include="rieltor.cs">
+    <Compile Include="RealtiesAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rieltor.Designer.cs">
-      <DependentUpon>rieltor.cs</DependentUpon>
+    <Compile Include="RealtiesAdd.Designer.cs">
+      <DependentUpon>RealtiesAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="rieltor_add.cs">
+    <Compile Include="Realtor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rieltor_add.Designer.cs">
-      <DependentUpon>rieltor_add.cs</DependentUpon>
+    <Compile Include="Realtor.Designer.cs">
+      <DependentUpon>Realtor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RealtorAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RealtorAdd.Designer.cs">
+      <DependentUpon>RealtorAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Главное меню.cs">
       <SubType>Form</SubType>
@@ -95,14 +159,32 @@
     <Compile Include="Главное меню.Designer.cs">
       <DependentUpon>Главное меню.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="client.resx">
-      <DependentUpon>client.cs</DependentUpon>
+    <EmbeddedResource Include="Deals.resx">
+      <DependentUpon>Deals.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="client_add.resx">
-      <DependentUpon>client_add.cs</DependentUpon>
+    <EmbeddedResource Include="DealsAdd.resx">
+      <DependentUpon>DealsAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="NeedsAdd.resx">
+      <DependentUpon>NeedsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientAdd.resx">
+      <DependentUpon>ClientAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auth.resx">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Needs.resx">
+      <DependentUpon>Needs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Offers.resx">
+      <DependentUpon>Offers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OffersAdd.resx">
+      <DependentUpon>OffersAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,14 +196,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="realties.resx">
-      <DependentUpon>realties.cs</DependentUpon>
+    <EmbeddedResource Include="Realties.resx">
+      <DependentUpon>Realties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rieltor.resx">
-      <DependentUpon>rieltor.cs</DependentUpon>
+    <EmbeddedResource Include="RealtiesAdd.resx">
+      <DependentUpon>RealtiesAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rieltor_add.resx">
-      <DependentUpon>rieltor_add.cs</DependentUpon>
+    <EmbeddedResource Include="Realtor.resx">
+      <DependentUpon>Realtor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RealtorAdd.resx">
+      <DependentUpon>RealtorAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Главное меню.resx">
       <DependentUpon>Главное меню.cs</DependentUpon>
@@ -141,7 +226,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\unnamed.jpg" />
+    <Content Include="Resources\unnamed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
