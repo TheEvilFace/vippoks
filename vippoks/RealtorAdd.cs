@@ -25,7 +25,7 @@ namespace vippoks
 
         private void rieltor_add_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _realtor.table();
+            _realtor.table(0);
         }
 
         private void button1_Click(object sender, EventArgs e)

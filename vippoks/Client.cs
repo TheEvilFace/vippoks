@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Data;
+using System.IO;
 
 namespace vippoks
 {
@@ -109,6 +110,31 @@ namespace vippoks
         private void button4_Click(object sender, EventArgs e)
         {
             change_lock();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ApiDefaultResponse apiResponse = _clientApiClient.FindUser(name.Text,
+                    surname.Text, patronomic.Text);
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), (typeof(DataTable)));
+
+                dataGridView1.DataSource = dt;
+                try
+                {
+                    dataGridView1.Columns.Remove("id");
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }

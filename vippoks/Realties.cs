@@ -56,7 +56,6 @@ namespace vippoks
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(type_id.SelectedValue.ToString());
             try
             {
                 _realtiesApiClient.UpdateById(id, Int32.Parse(floor.Text),
@@ -84,7 +83,14 @@ namespace vippoks
         {
             table();
             change_lock();
+            List<RealtyTypeEntity> TypeEntities = _realtiesApiClient.GetTypes();
             List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
+
+            type.DataSource = TypeEntities;
+            type.DisplayMember = "Name";
+            type.ValueMember = "Id";
+
+            realtyTypeEntities.Remove(realtyTypeEntities.Find(x => x.Id == 4));
             type_id.DataSource = realtyTypeEntities;
             type_id.DisplayMember = "Name";
             type_id.ValueMember = "Id";
@@ -137,6 +143,48 @@ namespace vippoks
         {
             RealtiesAdd f = new RealtiesAdd(this);
             f.Show();
+        }
+
+        private void type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(type.SelectedIndex == 0)
+                {
+                    return;
+                }
+                var apiResponse = _realtiesApiClient.GetByType(Int32.Parse(type.SelectedValue.ToString()));
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns.Remove("id");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                var apiResponse = _realtiesApiClient.FindByLatLong(float.Parse(x1.Text), float.Parse(у1.Text), 
+                    float.Parse(x2.Text), float.Parse(у2.Text));
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns.Remove("id");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }

@@ -18,14 +18,15 @@ namespace vippoks
             _realtorApiClient = new RealtorApiClient();
         }
         
-        public void table()
+        public void table(int id)
         {
-            var apiResponse = _realtorApiClient.Get();
-            dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
-
-            dataGridView1.DataSource = dt;
+            
             try
             {
+                var apiResponse = _realtorApiClient.Get(id);
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+
+                dataGridView1.DataSource = dt;
                 dataGridView1.Columns.Remove("id");
             }
             catch (Exception exp)
@@ -36,7 +37,7 @@ namespace vippoks
 
         private void rieltor_Load(object sender, EventArgs e)
         {
-            table();
+            table(0);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,7 +62,7 @@ namespace vippoks
             try
             {
                 _realtorApiClient.Delete(id);
-                table();
+                table(0);
             }
             catch (Exception exp)
             {
@@ -102,7 +103,7 @@ namespace vippoks
                 _realtorApiClient.UpdateById(id,
                     textBox1.Text, textBox2.Text,
                     textBox3.Text, textBox4.Text);
-                table();
+                table(0);
             }
             catch (Exception exp)
             {
@@ -110,6 +111,31 @@ namespace vippoks
             }
 
             change_lock();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                ApiDefaultResponse apiResponse = _realtorApiClient.FindUser(name.Text,
+                    surname.Text, patronomic.Text);
+
+                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), (typeof(DataTable)));
+
+                dataGridView1.DataSource = dt;
+                try
+                {
+                    dataGridView1.Columns.Remove("id");
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
+            }
         }
     }
 }

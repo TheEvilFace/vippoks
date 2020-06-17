@@ -87,8 +87,10 @@ namespace vippoks
         {
             try
             {
-                if (offer.SelectedIndex == 0) return;
-
+                if (offer.SelectedIndex == 0)
+                {
+                    return;
+                }
                 buy.Text = (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).price * 0.03).ToString();
                 switch (offersEntities.Find(x => x.id == Int32.Parse(offer.SelectedValue.ToString())).realty_type.Name)
                 {
@@ -110,7 +112,7 @@ namespace vippoks
             }
             catch(Exception exp)  // Тут не нужно ловить Exception
             {
-                MessageBox.Show(exp.Message);
+                MessageBox.Show(exp.ToString());
             }
         }
     }

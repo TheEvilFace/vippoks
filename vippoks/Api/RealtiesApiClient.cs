@@ -21,6 +21,15 @@ namespace vippoks
             string res = this.makeRequest(request);
             return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
         }
+        public ApiDefaultResponse GetByType(int id)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + $@"/find-by-type/{id}");
+
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_GET;
+            string res = this.makeRequest(request);
+            return JsonConvert.DeserializeObject<ApiDefaultResponse>(res);
+        }
 
         public void Delete(int id)
         {
@@ -59,6 +68,21 @@ namespace vippoks
             }
 
             this.makeRequest(request);
+        }
+        public ApiDefaultResponse FindByLatLong( float x1, float y1, float x2, float y2)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTIES_API_URL + @"/find-by-coords");
+
+            request.ContentType = CONTENT_TYPE;
+            request.Method = METHOD_POST;
+
+            object realtiesDataRequest = new { x1, y1, x2, y2 };
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(realtiesDataRequest));
+            }
+
+            return JsonConvert.DeserializeObject<ApiDefaultResponse>(this.makeRequest(request));
         }
         public List<RealtyTypeEntity> GetTypes()
         {
