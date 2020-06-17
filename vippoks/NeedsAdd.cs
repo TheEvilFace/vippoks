@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Net;
-using System.Windows.Forms;
-using System.IO;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using vippoks.Api.Entities;
 
 namespace vippoks
 {
     public partial class NeedsAdd : Form
     {
-        private NeedsApiClient _needsApiClient;
-        private ClientApiClient _clientApiClient;
-        private RealtorApiClient _realtorApiClient;
-        private RealtiesApiClient _realtiesApiClient;
-        Needs _needs;
+        private readonly ClientApiClient _clientApiClient;
+        private readonly Needs _needs;
+        private readonly NeedsApiClient _needsApiClient;
+        private readonly RealtiesApiClient _realtiesApiClient;
+        private readonly RealtorApiClient _realtorApiClient;
+
         public NeedsAdd(Needs owner)
         {
             InitializeComponent();
             _needs = owner;
-            this.FormClosing += new FormClosingEventHandler(this.NeedsAdd_FormClosing);
+            FormClosing += NeedsAdd_FormClosing;
             _needsApiClient = new NeedsApiClient();
             _clientApiClient = new ClientApiClient();
             _realtorApiClient = new RealtorApiClient();
@@ -46,10 +44,10 @@ namespace vippoks
         {
             try
             {
-                _needsApiClient.Create(Int32.Parse(client.SelectedValue.ToString()),
-              Int32.Parse(realtor.SelectedValue.ToString()), Double.Parse(MinPrice.Text),
-              Double.Parse(MaxPrice.Text), Int32.Parse(type.SelectedValue.ToString()));
-                this.Close();
+                _needsApiClient.Create(int.Parse(client.SelectedValue.ToString()),
+                    int.Parse(realtor.SelectedValue.ToString()), double.Parse(MinPrice.Text),
+                    double.Parse(MaxPrice.Text), int.Parse(type.SelectedValue.ToString()));
+                Close();
             }
             catch (Exception exp)
             {

@@ -42,7 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboclient = new System.Windows.Forms.ComboBox();
+            this.comboClient = new System.Windows.Forms.ComboBox();
             this.rieltor = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,7 +61,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(465, 188);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
@@ -181,11 +180,11 @@
             // 
             // comboclient
             // 
-            this.comboclient.FormattingEnabled = true;
-            this.comboclient.Location = new System.Drawing.Point(70, 17);
-            this.comboclient.Name = "comboclient";
-            this.comboclient.Size = new System.Drawing.Size(121, 21);
-            this.comboclient.TabIndex = 18;
+            this.comboClient.FormattingEnabled = true;
+            this.comboClient.Location = new System.Drawing.Point(70, 17);
+            this.comboClient.Name = "comboclient";
+            this.comboClient.Size = new System.Drawing.Size(121, 21);
+            this.comboClient.TabIndex = 18;
             // 
             // rieltor
             // 
@@ -232,7 +231,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.rieltor);
-            this.Controls.Add(this.comboclient);
+            this.Controls.Add(this.comboClient);
             this.Controls.Add(this.type);
             this.Controls.Add(this.realtor);
             this.Controls.Add(this.client);
@@ -274,7 +273,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboclient;
+        private System.Windows.Forms.ComboBox comboClient;
         private System.Windows.Forms.ComboBox rieltor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

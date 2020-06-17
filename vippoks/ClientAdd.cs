@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace vippoks
 {
     public partial class ClientAdd : Form
     {
-        private ClientApiClient _clientApiClient;
-        
+        private readonly ClientApiClient _clientApiClient;
+        private Client clientForm;
+
         public ClientAdd(Client owner)
         {
             InitializeComponent();
-            f = owner;
-            this.FormClosing += new FormClosingEventHandler(this.client_add_FormClosing);
+            clientForm = owner;
+            FormClosing += client_add_FormClosing;
             _clientApiClient = new ClientApiClient();
         }
 
@@ -25,24 +23,22 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             try
             {
                 _clientApiClient.Create(textBox1.Text, textBox2.Text,
-                    textBox3.Text, textBox4.Text, textBox5.Text );
-                this.Close();
-
-            }catch(Exception exp)
+                    textBox3.Text, textBox4.Text, textBox5.Text);
+                Close();
+            }
+            catch (Exception exp)
             {
-                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}"); 
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
         }
 
-        Client f;
 
         private void client_add_FormClosing(object sender, FormClosingEventArgs e)
         {
-                f.table();
+            clientForm.table();
         }
     }
 }

@@ -1,34 +1,34 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using System.Data;
-using System.IO;
 
 namespace vippoks
 {
     public partial class Client : Form
     {
         private readonly ClientApiClient _clientApiClient;
-        DataTable dt;
-        int id;
+        private DataTable dt;
+        private int id;
+
         public Client()
         {
             InitializeComponent();
             _clientApiClient = new ClientApiClient();
         }
-        
+
         public void table()
         {
             ApiDefaultResponse apiResponse = _clientApiClient.Get();
-            
-            dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), (typeof(DataTable)));
+
+            dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
             dataGridView1.DataSource = dt;
             try
             {
                 dataGridView1.Columns.Remove("id");
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
@@ -42,7 +42,7 @@ namespace vippoks
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Rows[e.RowIndex].Selected = true;
-            id = Int32.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
+            id = int.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
             textBox1.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
             textBox2.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][2].ToString();
             textBox3.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][3].ToString();
@@ -65,8 +65,8 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ClientAdd f1 = new ClientAdd(this);
-            f1.Show();
+            ClientAdd clientAddForm = new ClientAdd(this);
+            clientAddForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace vippoks
         {
             try
             {
-                _clientApiClient.UpdateById(id, 
+                _clientApiClient.UpdateById(id,
                     textBox1.Text, textBox2.Text,
                     textBox3.Text, textBox4.Text, textBox5.Text);
                 table();
@@ -104,6 +104,7 @@ namespace vippoks
             {
                 MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
+
             change_lock();
         }
 
@@ -116,10 +117,10 @@ namespace vippoks
         {
             try
             {
-                ApiDefaultResponse apiResponse = _clientApiClient.FindUser(name.Text,
+                ApiDefaultResponse apiResponse = _clientApiClient.Find(name.Text,
                     surname.Text, patronomic.Text);
 
-                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), (typeof(DataTable)));
+                dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
                 dataGridView1.DataSource = dt;
                 try

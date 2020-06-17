@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using vippoks.Api.Entities;
 
 namespace vippoks
@@ -10,12 +8,13 @@ namespace vippoks
     public partial class RealtiesAdd : Form
     {
         private readonly RealtiesApiClient _realtiesApiClient;
-        Realties _realties;
+        private readonly Realties _realties;
+
         public RealtiesAdd(Realties owner)
         {
             InitializeComponent();
             _realties = owner;
-            this.FormClosing += new FormClosingEventHandler(this.RealtiesAdd_FormClosing);
+            FormClosing += RealtiesAdd_FormClosing;
             _realtiesApiClient = new RealtiesApiClient();
 
             List<RealtyTypeEntity> realtyTypeEntities = _realtiesApiClient.GetTypes();
@@ -38,24 +37,18 @@ namespace vippoks
         {
             try
             {
-                _realtiesApiClient.Create(Int32.Parse(floor.Text),
-                city.Text, street.Text,
-                house.Text, Int32.Parse(type_id.SelectedValue.ToString()),
-                Int32.Parse(flat.Text), float.Parse(area.Text),
-                Int32.Parse(floors_count.Text), latitude.Text,
-                longitude.Text);
-                this.Close();
-
+                _realtiesApiClient.Create(int.Parse(floor.Text),
+                    city.Text, street.Text,
+                    house.Text, int.Parse(type_id.SelectedValue.ToString()),
+                    int.Parse(flat.Text), float.Parse(area.Text),
+                    int.Parse(floors_count.Text), latitude.Text,
+                    longitude.Text);
+                Close();
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.ToString());
             }
-        }
-
-        private void RealtiesAdd_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

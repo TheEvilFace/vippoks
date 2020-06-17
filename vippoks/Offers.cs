@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using vippoks.Api.Entities;
 
 namespace vippoks
@@ -12,10 +10,10 @@ namespace vippoks
     public partial class Offers : Form
     {
         private readonly OffersApiClient _offersApiClient;
-        private ClientApiClient _clientApiClient;
-        private RealtorApiClient _realtorApiClient;
-        private RealtiesApiClient _realtiesApiClient;
-        private DataTable dt;
+        private readonly ClientApiClient _clientApiClient;
+        private readonly RealtiesApiClient _realtiesApiClient;
+        private readonly RealtorApiClient _realtorApiClient;
+        private readonly DataTable dt;
         private int id;
 
         public Offers()
@@ -45,24 +43,24 @@ namespace vippoks
             type.ValueMember = "Id";
 
 
-            List<ClientEntity> ComboclientEntities = _clientApiClient.GetClients();
-            ComboclientEntities.Add(new ClientEntity() { name = " ", id = 0, patronymic = " ", surname = "Любой", phone =" ", email=" " });
-            comboclient.DataSource = ComboclientEntities;
-            comboclient.DisplayMember = "GetInitials";
-            comboclient.ValueMember = "id";
+            List<ClientEntity> comboClientEntities = _clientApiClient.GetClients();
+            comboClientEntities.Add(new ClientEntity
+                {name = " ", id = 0, patronymic = " ", surname = "Любой", phone = " ", email = " "});
+            comboClient.DataSource = comboClientEntities;
+            comboClient.DisplayMember = "GetInitials";
+            comboClient.ValueMember = "id";
 
-            List<RealtorEntity> ComborealtorEntities = _realtorApiClient.GetRealtors();
-            ComborealtorEntities.Add(new RealtorEntity() { name = " ", id = 0, part_percentage = 0, patronymic = " ", surname = "Любой" });
-            rieltor.DataSource = ComborealtorEntities;
+            var comboRealtorEntities = _realtorApiClient.GetRealtors();
+            comboRealtorEntities.Add(new RealtorEntity
+                {name = " ", id = 0, part_percentage = 0, patronymic = " ", surname = "Любой"});
+            rieltor.DataSource = comboRealtorEntities;
             rieltor.DisplayMember = "GetInitials";
             rieltor.ValueMember = "id";
-
-
-            
         }
+
         public void table()
         {
-            List<OfferEntity> offerEntities = _offersApiClient.GetTypes();
+            List<OfferEntity> offerEntities = _offersApiClient.GetOffers();
             FillDt(offerEntities);
             dataGridView1.DataSource = dt;
             try
@@ -71,7 +69,7 @@ namespace vippoks
                     dataGridView1.Columns.Remove("id");
 
                 if (dataGridView1.Columns.Contains("Client_id"))
-                    dataGridView1.Columns.Remove("Client_id"); 
+                    dataGridView1.Columns.Remove("Client_id");
 
                 if (dataGridView1.Columns.Contains("Realtor_id"))
                     dataGridView1.Columns.Remove("Realtor_id");
@@ -98,18 +96,20 @@ namespace vippoks
             {
                 DataRow row = dt.NewRow();
 
-                row["id"]  = offerEntity.id;
-                row["Price"]  = offerEntity.price;
-                
+                row["id"] = offerEntity.id;
+                row["Price"] = offerEntity.price;
+
                 row["Client_id"] = offerEntity.client.id;
-                row["Client"] = $@"{offerEntity.client.surname} {offerEntity.client.name} {offerEntity.client.patronymic}";
-                
+                row["Client"] =
+                    $@"{offerEntity.client.surname} {offerEntity.client.name} {offerEntity.client.patronymic}";
+
                 row["Realtor_id"] = offerEntity.realtor.id;
-                row["Realtor"] = $@"{offerEntity.realtor.surname} {offerEntity.realtor.name} {offerEntity.realtor.patronymic}";
-                
+                row["Realtor"] =
+                    $@"{offerEntity.realtor.surname} {offerEntity.realtor.name} {offerEntity.realtor.patronymic}";
+
                 row["Realty_id"] = offerEntity.realty_type.Id;
                 row["Realty"] = offerEntity.realty_type.Name;
-                
+
                 dt.Rows.Add(row);
             }
         }
@@ -118,13 +118,13 @@ namespace vippoks
         {
             dt.Columns.Add("id");
             dt.Columns.Add("Price");
-            
+
             dt.Columns.Add("Client_id");
             dt.Columns.Add("Client");
-            
+
             dt.Columns.Add("Realtor_id");
             dt.Columns.Add("Realtor");
-            
+
             dt.Columns.Add("Realty_id");
             dt.Columns.Add("Realty");
         }
@@ -135,10 +135,6 @@ namespace vippoks
             table();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void change_lock()
         {
@@ -169,7 +165,7 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OffersAdd f = new OffersAdd(this);
+            var f = new OffersAdd(this);
             f.Show();
         }
 
@@ -183,8 +179,8 @@ namespace vippoks
             try
             {
                 _offersApiClient.UpdateById(id,
-                    Int32.Parse(client.SelectedValue.ToString()),Int32.Parse(realtor.SelectedValue.ToString()), 
-                    Double.Parse(price.Text, CultureInfo.InvariantCulture),Int32.Parse(type.SelectedValue.ToString()));
+                    int.Parse(client.SelectedValue.ToString()), int.Parse(realtor.SelectedValue.ToString()),
+                    double.Parse(price.Text, CultureInfo.InvariantCulture), int.Parse(type.SelectedValue.ToString()));
                 change_lock();
                 table();
             }
@@ -196,7 +192,8 @@ namespace vippoks
 
         private void button6_Click(object sender, EventArgs e)
         {
-            List<OfferEntity> offerEntities = _offersApiClient.Find(Int32.Parse(comboclient.SelectedValue.ToString()), Int32.Parse(rieltor.SelectedValue.ToString()));
+            var offerEntities = _offersApiClient.Find(int.Parse(comboClient.SelectedValue.ToString()),
+                int.Parse(rieltor.SelectedValue.ToString()));
             FillDt(offerEntities);
             dataGridView1.DataSource = dt;
             try

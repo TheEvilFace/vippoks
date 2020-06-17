@@ -21,7 +21,7 @@ namespace vippoks
             this.makeRequest(request);
         }
 
-        public ApiDefaultResponse Get(int id)
+        public ApiDefaultResponse Get()
         {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + @"/get");
                 request.ContentType = CONTENT_TYPE;
@@ -61,7 +61,7 @@ namespace vippoks
 
             this.makeRequest(request);
         }
-        public ApiDefaultResponse FindUser(string name, string surname, string patronymic)
+        public ApiDefaultResponse FindRealtor(string name, string surname, string patronymic)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(REALTOR_API_URL + @"/find");
 

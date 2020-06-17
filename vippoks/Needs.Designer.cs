@@ -48,7 +48,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.rieltor = new System.Windows.Forms.ComboBox();
-            this.comboclient = new System.Windows.Forms.ComboBox();
+            this.comboClient = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,11 +235,11 @@
             // 
             // comboclient
             // 
-            this.comboclient.FormattingEnabled = true;
-            this.comboclient.Location = new System.Drawing.Point(72, 12);
-            this.comboclient.Name = "comboclient";
-            this.comboclient.Size = new System.Drawing.Size(121, 21);
-            this.comboclient.TabIndex = 34;
+            this.comboClient.FormattingEnabled = true;
+            this.comboClient.Location = new System.Drawing.Point(72, 12);
+            this.comboClient.Name = "comboclient";
+            this.comboClient.Size = new System.Drawing.Size(121, 21);
+            this.comboClient.TabIndex = 34;
             // 
             // Needs
             // 
@@ -250,7 +250,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.rieltor);
-            this.Controls.Add(this.comboclient);
+            this.Controls.Add(this.comboClient);
             this.Controls.Add(this.MaxPrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.type);
@@ -299,6 +299,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox rieltor;
-        private System.Windows.Forms.ComboBox comboclient;
+        private System.Windows.Forms.ComboBox comboClient;
     }
 }

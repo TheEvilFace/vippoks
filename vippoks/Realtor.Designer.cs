@@ -49,7 +49,7 @@
             this.patronomic = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.surname = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox4
@@ -275,10 +275,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "rieltor";
             this.Load += new System.EventHandler(this.rieltor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button button1;
@@ -286,24 +285,23 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lableads;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox patronomic;
+        private System.Windows.Forms.TextBox surname;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
 
         #endregion
-
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.Label lableads;
-        private System.Windows.Forms.TextBox patronomic;
-        private System.Windows.Forms.TextBox name;
-        private System.Windows.Forms.TextBox surname;
     }
 }

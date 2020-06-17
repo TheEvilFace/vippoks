@@ -55,7 +55,7 @@ namespace vippoks
 
             this.makeRequest(request);
         }
-        public List<DealEntity> GetTypes()
+        public List<DealEntity> GetDeals()
         {
             List<DealEntity> dealsEntity = new List<DealEntity>();
 

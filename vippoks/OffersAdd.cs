@@ -1,35 +1,33 @@
 ﻿using System;
-using System.Net;
-using System.Windows.Forms;
-using System.IO;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using vippoks.Api.Entities;
 
 namespace vippoks
 {
     public partial class OffersAdd : Form
     {
-        private OffersApiClient _offersApiClient;
-        private ClientApiClient _clientApiClient;
-        private RealtorApiClient _realtorApiClient;
-        private RealtiesApiClient _realtiesApiClient;
-        Offers _offers;
+        private readonly ClientApiClient _clientApiClient;
+        private readonly Offers _offers;
+        private readonly OffersApiClient _offersApiClient;
+        private readonly RealtiesApiClient _realtiesApiClient;
+        private readonly RealtorApiClient _realtorApiClient;
+
         public OffersAdd(Offers owner)
         {
             InitializeComponent();
             _offers = owner;
-            this.FormClosing += new FormClosingEventHandler(this.OffersAdd_FormClosing);
+            FormClosing += OffersAdd_FormClosing;
             _offersApiClient = new OffersApiClient();
             _clientApiClient = new ClientApiClient();
             _realtorApiClient = new RealtorApiClient();
             _realtiesApiClient = new RealtiesApiClient();
-            
+
             List<ClientEntity> clientEntities = _clientApiClient.GetClients();
             client.DataSource = clientEntities;
             client.DisplayMember = "GetInitials";
             client.ValueMember = "id";
-            
+
             List<RealtorEntity> realtorEntities = _realtorApiClient.GetRealtors();
             realtor.DataSource = realtorEntities;
             realtor.DisplayMember = "GetInitials";
@@ -54,17 +52,16 @@ namespace vippoks
 
         private void OffersAdd_FormClosing(object sender, FormClosingEventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                _offersApiClient.Create(Int32.Parse(client.SelectedValue.ToString()), 
-              Int32.Parse(realtor.SelectedValue.ToString()) , Double.Parse(price.Text),
-              Int32.Parse(type.SelectedValue.ToString()));
-                this.Close();
+                _offersApiClient.Create(int.Parse(client.SelectedValue.ToString()),
+                    int.Parse(realtor.SelectedValue.ToString()), double.Parse(price.Text),
+                    int.Parse(type.SelectedValue.ToString()));
+                Close();
             }
             catch (Exception exp)
             {

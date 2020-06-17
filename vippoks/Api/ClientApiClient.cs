@@ -61,7 +61,7 @@ namespace vippoks
 
             this.makeRequest(request);
         }
-        public ApiDefaultResponse FindUser(string name, string surname, string patronymic)
+        public ApiDefaultResponse Find(string name, string surname, string patronymic)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(CLIENT_API_URL + @"/find");
             

@@ -17,14 +17,13 @@ namespace vippoks
             InitializeComponent();
             _realtorApiClient = new RealtorApiClient();
         }
-        
-        public void table(int id)
+
+        public void table()
         {
-            
             try
             {
-                var apiResponse = _realtorApiClient.Get(id);
-                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+                var apiResponse = _realtorApiClient.Get();
+                dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
                 dataGridView1.DataSource = dt;
                 dataGridView1.Columns.Remove("id");
@@ -37,7 +36,7 @@ namespace vippoks
 
         private void rieltor_Load(object sender, EventArgs e)
         {
-            table(0);
+            table();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -62,11 +61,11 @@ namespace vippoks
             try
             {
                 _realtorApiClient.Delete(id);
-                table(0);
+                table();
             }
             catch (Exception exp)
             {
-                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}"); 
+                MessageBox.Show($@"Что-то пошло не так! Сообщение: {exp.Message}");
             }
         }
 
@@ -103,7 +102,7 @@ namespace vippoks
                 _realtorApiClient.UpdateById(id,
                     textBox1.Text, textBox2.Text,
                     textBox3.Text, textBox4.Text);
-                table(0);
+                table();
             }
             catch (Exception exp)
             {
@@ -117,10 +116,10 @@ namespace vippoks
         {
             try
             {
-                ApiDefaultResponse apiResponse = _realtorApiClient.FindUser(name.Text,
+                var apiResponse = _realtorApiClient.FindRealtor(name.Text,
                     surname.Text, patronomic.Text);
 
-                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), (typeof(DataTable)));
+                dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
                 dataGridView1.DataSource = dt;
                 try

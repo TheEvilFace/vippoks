@@ -62,7 +62,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.у2 = new System.Windows.Forms.TextBox();
             this.x2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // flat
@@ -397,10 +397,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "realties";
             this.Load += new System.EventHandler(this.Realties_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.TextBox area;
@@ -409,6 +408,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox city;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox flat;
@@ -417,6 +417,8 @@
         private System.Windows.Forms.TextBox house;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -428,17 +430,13 @@
         private System.Windows.Forms.TextBox latitude;
         private System.Windows.Forms.TextBox longitude;
         private System.Windows.Forms.TextBox street;
+        private System.Windows.Forms.ComboBox type;
         private System.Windows.Forms.ComboBox type_id;
+        private System.Windows.Forms.TextBox x1;
+        private System.Windows.Forms.TextBox x2;
+        private System.Windows.Forms.TextBox у1;
+        private System.Windows.Forms.TextBox у2;
 
         #endregion
-
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox type;
-        private System.Windows.Forms.TextBox x1;
-        private System.Windows.Forms.TextBox у1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox у2;
-        private System.Windows.Forms.TextBox x2;
     }
 }

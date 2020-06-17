@@ -53,7 +53,6 @@
             this.need.Name = "need";
             this.need.Size = new System.Drawing.Size(177, 21);
             this.need.TabIndex = 36;
-            this.need.SelectedIndexChanged += new System.EventHandler(this.need_SelectedIndexChanged);
             // 
             // offer
             // 

@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using vippoks.Api.Entities;
 
-
 namespace vippoks
 {
     public partial class Realties : Form
@@ -22,9 +21,9 @@ namespace vippoks
 
         public void table()
         {
-            var apiResponse = _realtiesApiClient.Get();
+            ApiDefaultResponse apiResponse = _realtiesApiClient.Get();
 
-            dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+            dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
             dataGridView1.DataSource = dt;
 
@@ -58,11 +57,11 @@ namespace vippoks
         {
             try
             {
-                _realtiesApiClient.UpdateById(id, Int32.Parse(floor.Text),
+                _realtiesApiClient.UpdateById(id, int.Parse(floor.Text),
                     city.Text, street.Text,
-                    house.Text, Int32.Parse(type_id.SelectedValue.ToString()),
-                    Int32.Parse(flat.Text), float.Parse(area.Text),
-                    Int32.Parse(floors_count.Text), latitude.Text, 
+                    house.Text, int.Parse(type_id.SelectedValue.ToString()),
+                    int.Parse(flat.Text), float.Parse(area.Text),
+                    int.Parse(floors_count.Text), latitude.Text,
                     longitude.Text);
                 table();
             }
@@ -103,13 +102,12 @@ namespace vippoks
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Rows[e.RowIndex].Selected = true;
-            id = Int32.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
+            id = int.Parse(dt.Rows[dataGridView1.CurrentCell.RowIndex][0].ToString());
 
             city.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][1].ToString();
             street.Text = dt.Rows[dataGridView1.CurrentCell.RowIndex][2].ToString();
@@ -141,21 +139,18 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RealtiesAdd f = new RealtiesAdd(this);
-            f.Show();
+            RealtiesAdd realtiesAddForm = new RealtiesAdd(this);
+            realtiesAddForm.Show();
         }
 
         private void type_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if(type.SelectedIndex == 0)
-                {
-                    return;
-                }
-                var apiResponse = _realtiesApiClient.GetByType(Int32.Parse(type.SelectedValue.ToString()));
+                if (type.SelectedIndex == 0) return;
+                ApiDefaultResponse apiResponse = _realtiesApiClient.GetByType(int.Parse(type.SelectedValue.ToString()));
 
-                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+                dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
                 dataGridView1.DataSource = dt;
 
@@ -169,13 +164,12 @@ namespace vippoks
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
             try
             {
-                var apiResponse = _realtiesApiClient.FindByLatLong(float.Parse(x1.Text), float.Parse(у1.Text), 
+                ApiDefaultResponse apiResponse = _realtiesApiClient.FindByLatLong(float.Parse(x1.Text), float.Parse(у1.Text),
                     float.Parse(x2.Text), float.Parse(у2.Text));
 
-                dt = (DataTable)JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
+                dt = (DataTable) JsonConvert.DeserializeObject(apiResponse.response.ToString(), typeof(DataTable));
 
                 dataGridView1.DataSource = dt;
 

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using Newtonsoft.Json;
 using vippoks.Api.Entities;
 
 namespace vippoks
@@ -13,10 +10,10 @@ namespace vippoks
     public partial class Needs : Form
     {
         private readonly NeedsApiClient _needsApiClient;
-        private ClientApiClient _clientApiClient;
-        private RealtorApiClient _realtorApiClient;
-        private RealtiesApiClient _realtiesApiClient;
-        private DataTable dt;
+        private readonly ClientApiClient _clientApiClient;
+        private readonly RealtiesApiClient _realtiesApiClient;
+        private readonly RealtorApiClient _realtorApiClient;
+        private readonly DataTable dt;
         private int id;
 
         public Needs()
@@ -28,9 +25,10 @@ namespace vippoks
             _clientApiClient = new ClientApiClient();
             _realtorApiClient = new RealtorApiClient();
             _realtiesApiClient = new RealtiesApiClient();
-            
-            this.InitCombos();
+
+            InitCombos();
         }
+
         public void table()
         {
             List<NeedsEntity> needsEntities = _needsApiClient.GetNeeds();
@@ -74,10 +72,12 @@ namespace vippoks
                 row["MaxPrice"] = needsEntity.maxPrice;
 
                 row["Client_id"] = needsEntity.client.id;
-                row["Client"] = $@"{needsEntity.client.surname} {needsEntity.client.name} {needsEntity.client.patronymic}";
+                row["Client"] =
+                    $@"{needsEntity.client.surname} {needsEntity.client.name} {needsEntity.client.patronymic}";
 
                 row["Realtor_id"] = needsEntity.realtor.id;
-                row["Realtor"] = $@"{needsEntity.realtor.surname} {needsEntity.realtor.name} {needsEntity.realtor.patronymic}";
+                row["Realtor"] =
+                    $@"{needsEntity.realtor.surname} {needsEntity.realtor.name} {needsEntity.realtor.patronymic}";
 
                 row["Realty_id"] = needsEntity.realty_type.Id;
                 row["Realty"] = needsEntity.realty_type.Name;
@@ -139,8 +139,8 @@ namespace vippoks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NeedsAdd f = new NeedsAdd(this);
-            f.Show();
+            NeedsAdd needsAddForm = new NeedsAdd(this);
+            needsAddForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -153,9 +153,10 @@ namespace vippoks
             try
             {
                 _needsApiClient.UpdateById(id,
-                    Int32.Parse(client.SelectedValue.ToString()), Int32.Parse(realtor.SelectedValue.ToString()),
-                    Double.Parse(MinPrice.Text, CultureInfo.InvariantCulture), Double.Parse(MaxPrice.Text, CultureInfo.InvariantCulture),  
-                    Int32.Parse(type.SelectedValue.ToString()));
+                    int.Parse(client.SelectedValue.ToString()), int.Parse(realtor.SelectedValue.ToString()),
+                    double.Parse(MinPrice.Text, CultureInfo.InvariantCulture),
+                    double.Parse(MaxPrice.Text, CultureInfo.InvariantCulture),
+                    int.Parse(type.SelectedValue.ToString()));
                 table();
                 change_lock();
             }
@@ -183,22 +184,25 @@ namespace vippoks
             type.DisplayMember = "Name";
             type.ValueMember = "Id";
 
-            List<ClientEntity> ComboclientEntities = _clientApiClient.GetClients();
-            ComboclientEntities.Add(new ClientEntity() { name = " ", id = 0, patronymic = " ", surname = "Любой", phone = " ", email = " " });
-            comboclient.DataSource = ComboclientEntities;
-            comboclient.DisplayMember = "GetInitials";
-            comboclient.ValueMember = "id";
+            List<ClientEntity> comboClientEntities = _clientApiClient.GetClients();
+            comboClientEntities.Add(new ClientEntity
+                {name = " ", id = 0, patronymic = " ", surname = "Любой", phone = " ", email = " "});
+            comboClient.DataSource = comboClientEntities;
+            comboClient.DisplayMember = "GetInitials";
+            comboClient.ValueMember = "id";
 
-            List<RealtorEntity> ComborealtorEntities = _realtorApiClient.GetRealtors();
-            ComborealtorEntities.Add(new RealtorEntity() { name = " ", id = 0, part_percentage = 0, patronymic = " ", surname = "Любой" });
-            rieltor.DataSource = ComborealtorEntities;
+            List<RealtorEntity> comboRealtorEntities = _realtorApiClient.GetRealtors();
+            comboRealtorEntities.Add(new RealtorEntity
+                {name = " ", id = 0, part_percentage = 0, patronymic = " ", surname = "Любой"});
+            rieltor.DataSource = comboRealtorEntities;
             rieltor.DisplayMember = "GetInitials";
             rieltor.ValueMember = "id";
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            List<NeedsEntity> needsEntities = _needsApiClient.Find(Int32.Parse(comboclient.SelectedValue.ToString()), Int32.Parse(rieltor.SelectedValue.ToString()));
+            List<NeedsEntity> needsEntities = _needsApiClient.Find(int.Parse(comboClient.SelectedValue.ToString()),
+                int.Parse(rieltor.SelectedValue.ToString()));
             FillDt(needsEntities);
             dataGridView1.DataSource = dt;
             try

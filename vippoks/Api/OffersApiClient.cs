@@ -83,7 +83,7 @@ namespace vippoks
             return offersEntity;
         }
 
-        public List<OfferEntity> GetTypes()
+        public List<OfferEntity> GetOffers()
         {
             List<OfferEntity> offersEntity = new List<OfferEntity>();
 
